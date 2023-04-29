@@ -1,0 +1,20 @@
+D:\1. IT\HK2-22-23\6.DBMS\code\Thang_Paint\Thang_Paint\bin\Debug\Thang_Paint.exe.config
+D:\1. IT\HK2-22-23\6.DBMS\code\Thang_Paint\Thang_Paint\bin\Debug\Thang_Paint.exe
+D:\1. IT\HK2-22-23\6.DBMS\code\Thang_Paint\Thang_Paint\bin\Debug\Thang_Paint.pdb
+D:\1. IT\HK2-22-23\6.DBMS\code\Thang_Paint\Thang_Paint\obj\Debug\Thang_Paint.csproj.AssemblyReference.cache
+D:\1. IT\HK2-22-23\6.DBMS\code\Thang_Paint\Thang_Paint\obj\Debug\Thang_Paint.csproj.SuggestedBindingRedirects.cache
+D:\1. IT\HK2-22-23\6.DBMS\code\Thang_Paint\Thang_Paint\obj\Debug\Thang_Paint.Paint.resources
+D:\1. IT\HK2-22-23\6.DBMS\code\Thang_Paint\Thang_Paint\obj\Debug\Thang_Paint.csproj.GenerateResource.cache
+D:\1. IT\HK2-22-23\6.DBMS\code\Thang_Paint\Thang_Paint\obj\Debug\Thang_Paint.csproj.CoreCompileInputs.cache
+D:\1. IT\HK2-22-23\6.DBMS\code\Thang_Paint\Thang_Paint\obj\Debug\Thang_Paint.exe
+D:\1. IT\HK2-22-23\6.DBMS\code\Thang_Paint\Thang_Paint\obj\Debug\Thang_Paint.pdb
+D:\1. IT\HK2-22-23\Window Programmings\2.Code\0.Thang_Paint\Thang_Paint\obj\Debug\Thang_Paint.csproj.AssemblyReference.cache
+D:\1. IT\HK2-22-23\Window Programmings\2.Code\0.Thang_Paint\Thang_Paint\obj\Debug\Thang_Paint.csproj.SuggestedBindingRedirects.cache
+D:\1. IT\HK2-22-23\Window Programmings\2.Code\0.Thang_Paint\Thang_Paint\obj\Debug\Thang_Paint.Paint.resources
+D:\1. IT\HK2-22-23\Window Programmings\2.Code\0.Thang_Paint\Thang_Paint\obj\Debug\Thang_Paint.csproj.GenerateResource.cache
+D:\1. IT\HK2-22-23\Window Programmings\2.Code\0.Thang_Paint\Thang_Paint\obj\Debug\Thang_Paint.csproj.CoreCompileInputs.cache
+D:\1. IT\HK2-22-23\Window Programmings\2.Code\0.Thang_Paint\Thang_Paint\obj\Debug\Thang_Paint.exe
+D:\1. IT\HK2-22-23\Window Programmings\2.Code\0.Thang_Paint\Thang_Paint\obj\Debug\Thang_Paint.pdb
+D:\1. IT\HK2-22-23\Window Programmings\2.Code\0.Thang_Paint\Thang_Paint\bin\Debug\Thang_Paint.exe.config
+D:\1. IT\HK2-22-23\Window Programmings\2.Code\0.Thang_Paint\Thang_Paint\bin\Debug\Thang_Paint.exe
+D:\1. IT\HK2-22-23\Window Programmings\2.Code\0.Thang_Paint\Thang_Paint\bin\Debug\Thang_Paint.pdb

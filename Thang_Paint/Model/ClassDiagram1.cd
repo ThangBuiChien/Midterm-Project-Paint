@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Thang_Paint.Model.Shape">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAQAAQAAEAAiAAAABAAAAQAAAEAAKCgAAAAAAAAAA=</HashCode>
+      <FileName>Model\Shape.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Thang_Paint.Model.data" Collapsed="true">
+    <Position X="10.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAiESAGEEAAEgAAgIIAACAAAJAAAVAoAAAAACBAAg=</HashCode>
+      <FileName>Model\data.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Thang_Paint.Model.cRectangle">
+    <Position X="3.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAgAAAAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\CRectangle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Thang_Paint.CLine">
+    <Position X="1.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAgAAAAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\CLine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Thang_Paint.CElipse">
+    <Position X="2" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\CElipse.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Thang_Paint.CCircle">
+    <Position X="7.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\CCircle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Thang_Paint.CPolygon">
+    <Position X="1.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAEAAgAAAAAAAAAAAAAAAAICAAAAAAAAAAA=</HashCode>
+      <FileName>Model\CPolygon.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Thang_Paint.CGroupShape">
+    <Position X="9.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAgAACAAAAAQAAAAAAAIAAAAAAAAABCg=</HashCode>
+      <FileName>Model\CGroupShape.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
