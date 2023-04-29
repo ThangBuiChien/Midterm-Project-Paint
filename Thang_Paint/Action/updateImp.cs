@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -82,5 +83,17 @@ namespace Thang_Paint.Action
             viewPaint.refreshDrawing();
         }
 
+        public void onClickSelectDashStyle(DashStyle dashStyle, Graphics g)
+        {
+            dataManager.dashStyleCurrent = dashStyle;
+            foreach (Shape item in dataManager.shapeList)
+            {
+                if (item.isSelected)
+                {
+                    item.dashStyle = dashStyle;
+                    viewPaint.setDrawing(item, g);
+                }
+            }
+        }
     }
 }

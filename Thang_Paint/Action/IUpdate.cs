@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,6 +29,8 @@ namespace Thang_Paint.Action
         /// </summary>
         /// <param name="size"></param>
         void onClickSelectSize(int size);
+
+        void onClickSelectDashStyle(DashStyle dashStyle, Graphics g);
 
         /// <summary>
         /// Phương thức xử lý khi người dụng chọn chế độ fill

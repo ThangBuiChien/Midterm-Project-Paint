@@ -36,7 +36,8 @@ namespace Thang_Paint
             //presenterAlter = new PresenterAlterImp(this);
             updateImp = new updateImp(this);
             updateImp.onClickSelectColor(Color.Black, gr);
-            updateImp.onClickSelectSize(SBLineSize.Value + 1);
+            updateImp.onClickSelectDashStyle(DashStyle.Solid, gr);
+            updateImp.onClickSelectSize(SBLineSize.Value + 2);
         }
 
         public void movingControlPoint(Shape shape, Point pointCurrent, Point previous, int indexPoint)
@@ -221,6 +222,34 @@ namespace Thang_Paint
         {
             Button btn = sender as Button;
             updateImp.onClickSelectFill(btn, gr);
+        }
+
+        private void cbDash_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DashStyle dashStyle = new DashStyle();
+            if (cbDash.SelectedIndex == 0)
+            {
+                dashStyle = DashStyle.Solid;
+            }
+            else if (cbDash.SelectedIndex== 1)
+            {
+                dashStyle = DashStyle.Dash;
+            }
+            else if (cbDash.SelectedIndex== 2)
+            {
+                dashStyle = DashStyle.Dot;
+            }
+            else if (cbDash.SelectedIndex== 3)
+            {
+                dashStyle = DashStyle.DashDot;
+            }
+            else if (cbDash.SelectedIndex==4)
+            {
+                dashStyle = DashStyle.DashDotDot;
+            }
+            updateImp.onClickSelectDashStyle(dashStyle, gr);
+
+
         }
     }
 }
