@@ -67,6 +67,7 @@ namespace Thang_Paint.Model
                 contourWidth = contourWidth,
                 isSelected = isSelected,
                 color = color,
+                dashStyle = dashStyle,
                 name = name
             };
         }
@@ -86,6 +87,7 @@ namespace Thang_Paint.Model
                 {
                     using (Pen p = new Pen(color, contourWidth))
                     {
+                        p.DashStyle = dashStyle;
                         gp.DrawPath(p, path);
                     }
                 }

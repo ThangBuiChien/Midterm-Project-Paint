@@ -53,6 +53,7 @@ namespace Thang_Paint
                 name = name,
                 color = color,
                 contourWidth = contourWidth,
+                dashStyle = dashStyle,
                 isFill = isFill
             };
             points.ForEach(point => polygon.points.Add(point));
@@ -67,6 +68,7 @@ namespace Thang_Paint
                 {
                     using (Pen pen = new Pen(color, contourWidth))
                     {
+                        pen.DashStyle = dashStyle;
                         gp.DrawPath(pen, path);
                     }
                 }

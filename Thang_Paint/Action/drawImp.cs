@@ -305,6 +305,7 @@ namespace Thang_Paint.Action
                     tailPoint = p,
                     contourWidth = dataManager.lineSize,
                     color = dataManager.colorCurrent,
+                    dashStyle = dataManager.dashStyleCurrent,
                     isFill = dataManager.isFill
                 });
             }
@@ -328,6 +329,7 @@ namespace Thang_Paint.Action
                     tailPoint = p,
                     contourWidth = dataManager.lineSize,
                     color = dataManager.colorCurrent,
+                    dashStyle = dataManager.dashStyleCurrent,
                     isFill = dataManager.isFill
                 });
             }
@@ -339,6 +341,7 @@ namespace Thang_Paint.Action
                     tailPoint = p,
                     contourWidth = dataManager.lineSize,
                     color = dataManager.colorCurrent,
+                    dashStyle = dataManager.dashStyleCurrent,
                     isFill = dataManager.isFill
                 });
             }
@@ -351,6 +354,7 @@ namespace Thang_Paint.Action
                     {
                         color = dataManager.colorCurrent,
                         contourWidth = dataManager.lineSize,
+                        dashStyle = dataManager.dashStyleCurrent,
                         isFill = dataManager.isFill
 
                     };
