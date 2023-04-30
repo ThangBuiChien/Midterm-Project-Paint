@@ -16,7 +16,7 @@ namespace Thang_Paint
 {
     public partial class Paint : Form, Thang_Paint.view.IVIew
     {
-        private drawImp presenterDraw;
+        private drawImp drawImp;
         private Graphics gr;
         private updateImp updateImp;
         private float zoomFactor = 1.0f; // the current zoom factor, initialized to 100%
@@ -33,7 +33,7 @@ namespace Thang_Paint
         }
         private void initComponents()
         {
-            presenterDraw = new drawImp(this);
+            drawImp = new drawImp(this);
             //presenterAlter = new PresenterAlterImp(this);
             updateImp = new updateImp(this);
             updateImp.onClickSelectColor(Color.Black, gr);
@@ -105,29 +105,29 @@ namespace Thang_Paint
 
         private void button1_Click(object sender, EventArgs e)
         {
-            presenterDraw.onClickDrawRectangle();
+            drawImp.onClickDrawRectangle();
         }
 
         private void panel1_MouseDown(object sender, MouseEventArgs e)
         {
-            presenterDraw.onClickMouseDown(e.Location);
+            drawImp.onClickMouseDown(e.Location);
         }
 
         private void panel1_MouseMove(object sender, MouseEventArgs e)
         {
            // lbLocation.Text = e.Location.X + ", " + e.Location.Y + "px";
-            presenterDraw.onClickMouseMove(e.Location);
+            drawImp.onClickMouseMove(e.Location);
         }
 
         private void panel1_MouseUp(object sender, MouseEventArgs e)
         {
-            presenterDraw.onClickMouseUp();
+            drawImp.onClickMouseUp();
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
-            presenterDraw.getDrawing(e.Graphics);
+            drawImp.getDrawing(e.Graphics);
         }
 
         private void SBLineSize_Scroll(object sender, ScrollEventArgs e)
@@ -177,36 +177,36 @@ namespace Thang_Paint
 
         private void btnLine_Click(object sender, EventArgs e)
         {
-            presenterDraw.onClickDrawLine();
+            drawImp.onClickDrawLine();
 
         }
 
         private void btnElipse_Click(object sender, EventArgs e)
         {
-            presenterDraw.onClickDrawElipse();
+            drawImp.onClickDrawElipse();
 
         }
 
         private void btnCircle_Click(object sender, EventArgs e)
         {
-            presenterDraw.onClickDrawCircle();
+            drawImp.onClickDrawCircle();
 
         }
 
         private void btnPolygon_Click(object sender, EventArgs e)
         {
-            presenterDraw.onClickDrawPolygon();
+            drawImp.onClickDrawPolygon();
         }
 
         private void PLMain_MouseClick(object sender, MouseEventArgs e)
         {
-            presenterDraw.onClickStopDrawing(e.Button);
+            drawImp.onClickStopDrawing(e.Button);
 
         }
 
         private void btnGroup_Click(object sender, EventArgs e)
         {
-            presenterDraw.onClickDrawGroup();
+            drawImp.onClickDrawGroup();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -303,6 +303,18 @@ namespace Thang_Paint
                 brushStyle = HatchStyle.DottedGrid;
             }
             updateImp.onClickSelectBrushStyle(brushStyle, gr);
+
+        }
+
+        private void btnPen_Click(object sender, EventArgs e)
+        {
+            updateImp.onClickSelectPen(gr);
+
+        }
+
+        private void btnUngroup_Click(object sender, EventArgs e)
+        {
+            drawImp.onClickDrawUnGroup();
 
         }
     }

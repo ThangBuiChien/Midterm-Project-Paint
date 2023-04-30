@@ -206,5 +206,21 @@ namespace Thang_Paint
                 return shapes.Count;
             }
         }
+        public override void moveShape(Point distance)
+        {
+            for (int i = 0; i < shapes.Count; i++)
+            {
+                if (shapes[i] is CGroupShape)
+                {
+                    CGroupShape group = (CGroupShape)shapes[i];
+                    group.moveShape(distance);
+                }
+                else
+                {
+                    shapes[i].moveShape(distance);
+                }
+            }
+            base.moveShape(distance);
+        }
     }
 }

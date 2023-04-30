@@ -39,6 +39,9 @@ namespace Thang_Paint.Action
         /// <param name="g"></param>
         void onClickSelectFill(Button btn, Graphics g);
 
+        void onClickSelectPen(Graphics g);
+
+
         void onClickSelectZoom(float zoomFactor, Graphics g);
          void onClickDeleteShape();
 

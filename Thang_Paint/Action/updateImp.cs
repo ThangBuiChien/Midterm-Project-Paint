@@ -114,5 +114,10 @@ namespace Thang_Paint.Action
             viewPaint.refreshDrawing();
 
         }
+
+        public void onClickSelectPen(Graphics g)
+        {
+            dataManager.isFill = false;
+        }
     }
 }
