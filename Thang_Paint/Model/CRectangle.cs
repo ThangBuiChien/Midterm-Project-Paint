@@ -68,6 +68,7 @@ namespace Thang_Paint.Model
                 isSelected = isSelected,
                 color = color,
                 dashStyle = dashStyle,
+                brushStyle = brushStyle,
                 name = name
             };
         }
@@ -78,7 +79,7 @@ namespace Thang_Paint.Model
             {
                 if (isFill)
                 {
-                    using (Brush b = new SolidBrush(color))
+                    using (Brush b = new HatchBrush(brushStyle, Color.White, color))
                     {
                         gp.FillPath(b, path);
                     }

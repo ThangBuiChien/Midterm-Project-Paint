@@ -74,6 +74,8 @@ namespace Thang_Paint.Model
         //TODO: lưu dash line
         public DashStyle dashStyleCurrent { get; set; }
 
+        public HatchStyle hatchStyleCurrent { get; set; }
+
         //TODO: chứa danh sách các hình
         public int lineSize { get; set; }
 

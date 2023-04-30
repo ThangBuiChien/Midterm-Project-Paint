@@ -92,8 +92,27 @@ namespace Thang_Paint.Action
                 {
                     item.dashStyle = dashStyle;
                     viewPaint.setDrawing(item, g);
+
                 }
             }
+            viewPaint.refreshDrawing();
+
+        }
+
+        public void onClickSelectBrushStyle(HatchStyle hatchStyle, Graphics g)
+        {
+            dataManager.hatchStyleCurrent = hatchStyle;
+            foreach (Shape item in dataManager.shapeList)
+            {
+                if (item.isSelected)
+                {
+                    item.brushStyle = hatchStyle;
+                    viewPaint.setDrawing(item, g);
+
+                }
+            }
+            viewPaint.refreshDrawing();
+
         }
     }
 }

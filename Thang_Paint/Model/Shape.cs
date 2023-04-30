@@ -31,6 +31,8 @@ namespace Thang_Paint.Model
 
         public DashStyle dashStyle { get; set; }    
 
+        public HatchStyle brushStyle { get; set; }
+
 
         public int contourWidth { get; set; }
 

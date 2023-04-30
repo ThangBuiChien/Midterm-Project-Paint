@@ -46,6 +46,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.btnFilled = new System.Windows.Forms.Button();
             this.cbDash = new System.Windows.Forms.ComboBox();
+            this.cbBrushStyle = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // button1
@@ -222,11 +223,28 @@
             this.cbDash.TabIndex = 17;
             this.cbDash.SelectedIndexChanged += new System.EventHandler(this.cbDash_SelectedIndexChanged);
             // 
+            // cbBrushStyle
+            // 
+            this.cbBrushStyle.FormattingEnabled = true;
+            this.cbBrushStyle.Items.AddRange(new object[] {
+            "Horizontal",
+            "Backward Diagonal",
+            "Cross",
+            "Dark Downward Diagonal",
+            "Dotted Grid",
+            "Horizontal Brick"});
+            this.cbBrushStyle.Location = new System.Drawing.Point(115, 609);
+            this.cbBrushStyle.Name = "cbBrushStyle";
+            this.cbBrushStyle.Size = new System.Drawing.Size(121, 24);
+            this.cbBrushStyle.TabIndex = 18;
+            this.cbBrushStyle.SelectedIndexChanged += new System.EventHandler(this.cbBrushStyle_SelectedIndexChanged);
+            // 
             // Paint
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1138, 725);
+            this.Controls.Add(this.cbBrushStyle);
             this.Controls.Add(this.cbDash);
             this.Controls.Add(this.btnFilled);
             this.Controls.Add(this.button2);
@@ -244,9 +262,12 @@
             this.Controls.Add(this.SBLineSize);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.PLMain);
+            this.KeyPreview = true;
             this.Name = "Paint";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Paint_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Paint_KeyDown);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Paint_KeyPress);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -271,5 +292,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnFilled;
         private System.Windows.Forms.ComboBox cbDash;
+        private System.Windows.Forms.ComboBox cbBrushStyle;
     }
 }

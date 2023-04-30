@@ -28,6 +28,7 @@ namespace Thang_Paint
             InitializeComponent();
             initComponents();
             gr = PLMain.CreateGraphics();
+           
 
         }
         private void initComponents()
@@ -37,7 +38,11 @@ namespace Thang_Paint
             updateImp = new updateImp(this);
             updateImp.onClickSelectColor(Color.Black, gr);
             updateImp.onClickSelectDashStyle(DashStyle.Solid, gr);
+            updateImp.onClickSelectBrushStyle(HatchStyle.Horizontal, gr);
             updateImp.onClickSelectSize(SBLineSize.Value + 2);
+            this.KeyPreview = true;
+            this.KeyDown += new KeyEventHandler(Paint_KeyDown);
+
         }
 
         public void movingControlPoint(Shape shape, Point pointCurrent, Point previous, int indexPoint)
@@ -249,6 +254,55 @@ namespace Thang_Paint
             }
             updateImp.onClickSelectDashStyle(dashStyle, gr);
 
+
+
+        }
+
+        private void Paint_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.ControlKey)
+            {
+                updateImp.onClickSelectMode();
+                e.Handled = true;
+            }
+            if(e.KeyCode == Keys.Delete)
+            {
+                updateImp.onClickDeleteShape();
+
+            }
+
+
+        }
+
+        private void Paint_KeyPress(object sender, KeyPressEventArgs e)
+        {
+           
+        }
+
+        private void cbBrushStyle_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            HatchStyle brushStyle = new HatchStyle();
+            if (cbBrushStyle.SelectedIndex == 0)
+            {
+                brushStyle = HatchStyle.Horizontal;
+            }
+            else if (cbBrushStyle.SelectedIndex == 1)
+            {
+                brushStyle = HatchStyle.BackwardDiagonal;
+            }
+            else if (cbBrushStyle.SelectedIndex == 2)
+            {
+                brushStyle = HatchStyle.Cross;
+            }
+            else if (cbBrushStyle.SelectedIndex == 3)
+            {
+                brushStyle = HatchStyle.DarkDownwardDiagonal;
+            }
+            else if (cbBrushStyle.SelectedIndex == 4)
+            {
+                brushStyle = HatchStyle.DottedGrid;
+            }
+            updateImp.onClickSelectBrushStyle(brushStyle, gr);
 
         }
     }

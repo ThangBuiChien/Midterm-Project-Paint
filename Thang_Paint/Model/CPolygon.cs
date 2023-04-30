@@ -54,6 +54,7 @@ namespace Thang_Paint
                 color = color,
                 contourWidth = contourWidth,
                 dashStyle = dashStyle,
+                brushStyle = brushStyle,
                 isFill = isFill
             };
             points.ForEach(point => polygon.points.Add(point));
@@ -74,18 +75,18 @@ namespace Thang_Paint
                 }
                 else
                 {
-                    using (Brush brush = new SolidBrush(color))
+                    using (Brush b = new HatchBrush(brushStyle, Color.White, color))
                     {
                         if (points.Count < 3)
                         {
-                            using (Pen pen = new Pen(Color.Red, contourWidth))
+                            using (Pen pen = new Pen(color, contourWidth))
                             {
                                 gp.DrawPath(pen, path);
                             }
                         }
                         else
                         {
-                            gp.FillPath(brush, path);
+                            gp.FillPath(b, path);
                         }
                     }
                 }
@@ -120,5 +121,26 @@ namespace Thang_Paint
                 points[i] = new Point(points[i].X + distance.X, points[i].Y + distance.Y);
             }
         }
+
+        public void findHeadTailPoint()
+        {
+            Point tempHead = points[0];
+            Point tempTail= points[0];
+            for (int i = 1; i < points.Count; i++)
+            {
+                if(tempHead.X < points[i].X && tempHead.Y < points[i].Y)
+                {
+                    tempHead = points[i];   
+                }
+                else if (tempHead.X > points[i].X && tempHead.Y > points[i].Y)
+                {
+                    tempTail = points[i];
+                }
+            }
+
+            headPoint = tempHead;
+            tailPoint = tempTail;
+        }
+
     }
 }

@@ -186,7 +186,7 @@ namespace Thang_Paint.Action
                     dataManager.shapeToMove = dataManager.shapeList[i];
                     break;
                 }
-                else if (dataManager.shapeList[i].isHit(p))
+                else if (dataManager.shapeList[i].isHit(p))             //Cho hình đã chọn vô shape để di chuyển
                 {
                     dataManager.shapeToMove = dataManager.shapeList[i];
                     dataManager.shapeList[i].isSelected = true;
@@ -200,7 +200,7 @@ namespace Thang_Paint.Action
             {
                 dataManager.cursorCurrent = p;
             }
-            else if (dataManager.shapeToMove != null)
+            else if (dataManager.shapeToMove != null)       //Nếu đúng là chức năng di chuyển thì dánh dấu rồi chuyển qua 
             {
                 dataManager.isMovingShape = true;
                 dataManager.cursorCurrent = p;
@@ -210,7 +210,7 @@ namespace Thang_Paint.Action
             }
             else
             {
-                dataManager.isMovingMouse = true;
+                dataManager.isMovingMouse = true;                               
                 dataManager.rectangleRegion = new Rectangle(p, new Size(0, 0));
             }
         }
@@ -257,6 +257,7 @@ namespace Thang_Paint.Action
                 {
                     CPolygon polygon = dataManager.shapeList[dataManager.shapeList.Count - 1] as CPolygon;
                     polygon.points[polygon.points.Count - 1] = p;
+                    polygon.findHeadTailPoint();
                     viewPaint.refreshDrawing();
                 }
             }
@@ -306,6 +307,7 @@ namespace Thang_Paint.Action
                     contourWidth = dataManager.lineSize,
                     color = dataManager.colorCurrent,
                     dashStyle = dataManager.dashStyleCurrent,
+                    brushStyle = dataManager.hatchStyleCurrent,
                     isFill = dataManager.isFill
                 });
             }
@@ -330,6 +332,7 @@ namespace Thang_Paint.Action
                     contourWidth = dataManager.lineSize,
                     color = dataManager.colorCurrent,
                     dashStyle = dataManager.dashStyleCurrent,
+                    brushStyle = dataManager.hatchStyleCurrent,
                     isFill = dataManager.isFill
                 });
             }
@@ -342,6 +345,7 @@ namespace Thang_Paint.Action
                     contourWidth = dataManager.lineSize,
                     color = dataManager.colorCurrent,
                     dashStyle = dataManager.dashStyleCurrent,
+                    brushStyle = dataManager.hatchStyleCurrent,
                     isFill = dataManager.isFill
                 });
             }
@@ -355,6 +359,7 @@ namespace Thang_Paint.Action
                         color = dataManager.colorCurrent,
                         contourWidth = dataManager.lineSize,
                         dashStyle = dataManager.dashStyleCurrent,
+                        brushStyle = dataManager.hatchStyleCurrent,
                         isFill = dataManager.isFill
 
                     };
