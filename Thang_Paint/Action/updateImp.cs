@@ -47,9 +47,19 @@ namespace Thang_Paint.Action
             }
         }
 
-        public void onClickSelectSize(int size)
+        public void onClickSelectSize(int size, Graphics g)
         {
             dataManager.lineSize = size;
+            foreach (Shape item in dataManager.shapeList)
+            {
+                if (item.isSelected)
+                {
+                    item.contourWidth = size;
+                    viewPaint.setDrawing(item, g);
+                    viewPaint.refreshDrawing();
+
+                }
+            }
         }
 
         public void onClickSelectFill(Button btn, Graphics g)

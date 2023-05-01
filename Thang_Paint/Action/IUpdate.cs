@@ -28,7 +28,7 @@ namespace Thang_Paint.Action
         /// Phương thức xử lý khi người dụng chọn thay đôi kích thước đường vẽ
         /// </summary>
         /// <param name="size"></param>
-        void onClickSelectSize(int size);
+        void onClickSelectSize(int size, Graphics g);
 
         void onClickSelectDashStyle(DashStyle dashStyle, Graphics g);
 

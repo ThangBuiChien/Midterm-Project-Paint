@@ -124,22 +124,18 @@ namespace Thang_Paint
 
         public void findHeadTailPoint()
         {
-            Point tempHead = points[0];
-            Point tempTail= points[0];
-            for (int i = 1; i < points.Count; i++)
+            int minX = int.MaxValue, maxX = int.MinValue, minY = int.MaxValue, maxY = int.MinValue;
+
+            for (int i = 0; i < points.Count; i++)
             {
-                if(tempHead.X < points[i].X && tempHead.Y < points[i].Y)
-                {
-                    tempHead = points[i];   
-                }
-                else if (tempHead.X > points[i].X && tempHead.Y > points[i].Y)
-                {
-                    tempTail = points[i];
-                }
+                if (points[i].X < minX) minX = points[i].X;
+                if (points[i].X > maxX) maxX = points[i].X;
+                if (points[i].Y < minY) minY = points[i].Y;
+                if (points[i].Y > maxY) maxY = points[i].Y;
             }
 
-            headPoint = tempHead;
-            tailPoint = tempTail;
+            headPoint = new Point(minX, minY);
+            tailPoint = new Point(maxX, maxY);
         }
 
     }

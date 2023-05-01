@@ -39,7 +39,7 @@ namespace Thang_Paint
             updateImp.onClickSelectColor(Color.Black, gr);
             updateImp.onClickSelectDashStyle(DashStyle.Solid, gr);
             updateImp.onClickSelectBrushStyle(HatchStyle.Horizontal, gr);
-            updateImp.onClickSelectSize(SBLineSize.Value + 2);
+            updateImp.onClickSelectSize(2, gr);
             this.KeyPreview = true;
             this.KeyDown += new KeyEventHandler(Paint_KeyDown);
 
@@ -132,7 +132,7 @@ namespace Thang_Paint
 
         private void SBLineSize_Scroll(object sender, ScrollEventArgs e)
         {
-            updateImp.onClickSelectSize(SBLineSize.Value + 1);
+            updateImp.onClickSelectSize(SBLineSize.Value , gr);
         }
 
         private void Paint_Load(object sender, EventArgs e)

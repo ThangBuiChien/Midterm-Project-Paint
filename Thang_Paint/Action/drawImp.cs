@@ -136,7 +136,6 @@ namespace Thang_Paint.Action
         }
         public void onClickDrawGroup()
         {
-            //TODO: tìm ra những hình được chọn, đếm số lượng lớn hơn 1 thì nhóm lại với nhau
             if (dataManager.shapeList.Count(shape => shape.isSelected) > 1)
             {
                 CGroupShape group = new CGroupShape();
@@ -172,13 +171,9 @@ namespace Thang_Paint.Action
 
             public void onClickMouseDown(Point p)
        {
-            dataManager.isSave = false;
             dataManager.isNotNone = true;
             if (dataManager.currentShape.Equals(CurrentShapeStatus.Void))
-            {
-                /*if (!(Control.ModifierKeys == Keys.Control))
-                    dataManager.offAllShapeSelected();*/
-
+            { 
                 dataManager.offAllShapeSelected();
                 viewPaint.refreshDrawing();
                 handleClickToSelect(p);

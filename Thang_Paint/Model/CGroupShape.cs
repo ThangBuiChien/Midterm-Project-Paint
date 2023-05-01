@@ -222,5 +222,35 @@ namespace Thang_Paint
             }
             base.moveShape(distance);
         }
+
+        public static void setPointHeadTail(CGroupShape group)
+        {
+            int minX = int.MaxValue, minY = int.MaxValue;
+            int maxX = int.MinValue, maxY = int.MinValue;
+
+
+
+
+            for (int i = 0; i < group.Count; i++)
+            {
+                Shape shape = group[i];
+
+                /*if (shape.headPoint.X < minX) minX = shape.headPoint.X;
+                if (shape.headPoint.Y < maxX) minY = shape.headPoint.Y;
+                if (shape.tailPoint.X > minX) minY = shape.tailPoint.X;
+                if (shape.tailPoint.Y > maxY) maxY = shape.tailPoint.Y;*/
+
+                if (shape.headPoint.X < minX) minX = shape.headPoint.X;
+                if (shape.tailPoint.X < minX) minX = shape.tailPoint.X;
+                if (shape.headPoint.Y < minY) minY = shape.headPoint.Y;
+                if (shape.tailPoint.Y < minY) minY = shape.tailPoint.Y;
+                if (shape.headPoint.X > maxX) maxX = shape.headPoint.X;
+                if (shape.tailPoint.X > maxX) maxX = shape.tailPoint.X;
+                if (shape.headPoint.Y > maxY) maxY = shape.headPoint.Y;
+                if (shape.tailPoint.Y > maxY) maxY = shape.tailPoint.Y;
+            }
+            group.headPoint = new Point(minX, minY);
+            group.tailPoint = new Point(maxX, maxY);
+        }
     }
 }
