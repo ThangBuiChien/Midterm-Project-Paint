@@ -24,32 +24,11 @@ namespace Thang_Paint
         {
             get
             {
+
                 GraphicsPath path = new GraphicsPath();
-                double radius = Math.Round(Math.Sqrt(Math.Pow((headPoint.X - tailPoint.X), 2)
-                    + Math.Pow((headPoint.Y - tailPoint.Y), 2)), 1);
-
-                if (tailPoint.X < headPoint.X && tailPoint.Y < headPoint.Y)
-                {
-                    path.AddEllipse(new System.Drawing.Rectangle(tailPoint,
-                        new Size((int)radius, (int)radius)));
-
-                }
-
-                else if (headPoint.X > tailPoint.X && headPoint.Y < tailPoint.Y)
-                {
-                    path.AddEllipse(new System.Drawing.Rectangle(new Point(tailPoint.X, headPoint.Y),
-                        new Size((int)radius, (int)radius)));
-                }
-                else if (headPoint.X < tailPoint.X && headPoint.Y > tailPoint.Y)
-                {
-                    path.AddEllipse(new System.Drawing.Rectangle(new Point(headPoint.X, tailPoint.Y),
-                        new Size((int)radius, (int)radius)));
-                }
-                else
-                {
-                    path.AddEllipse(new System.Drawing.Rectangle(headPoint,
-                        new Size((int)radius, (int)radius)));
-                }
+                int rx2 = ((tailPoint.X - headPoint.X) + (tailPoint.Y - headPoint.Y)) / 2;
+                path.AddEllipse(new Rectangle(headPoint.X, headPoint.Y, rx2, rx2));
+                tailPoint = new Point(headPoint.X + rx2, headPoint.Y + rx2);
                 return path;
             }
         }

@@ -94,30 +94,30 @@ namespace Thang_Paint.Action
         public void onClickDrawRectangle()
         {
             setDefaultToDraw();
-            dataManager.currentShape = CurrentShapeStatus.Rectangle;
+            dataManager.currentShape = CurrentShape.Rectangle;
         }
         public void onClickDrawLine()
         {
             setDefaultToDraw();
-            dataManager.currentShape = CurrentShapeStatus.Line;
+            dataManager.currentShape = CurrentShape.Line;
 
         }
 
         public void onClickDrawElipse()
         {
             setDefaultToDraw();
-            dataManager.currentShape = CurrentShapeStatus.Ellipse ;
+            dataManager.currentShape = CurrentShape.Ellipse ;
         }
 
         public void onClickDrawCircle()
         {
             setDefaultToDraw();
-            dataManager.currentShape = CurrentShapeStatus.Circle;
+            dataManager.currentShape = CurrentShape.Circle;
         }
         public void onClickDrawPolygon()
         {
             setDefaultToDraw();
-            dataManager.currentShape = CurrentShapeStatus.Polygon;
+            dataManager.currentShape = CurrentShape.Polygon;
 
         }
 
@@ -125,7 +125,7 @@ namespace Thang_Paint.Action
         {
             if (mouse == MouseButtons.Right)
             {
-                if (dataManager.currentShape.Equals(CurrentShapeStatus.Polygon))
+                if (dataManager.currentShape.Equals(CurrentShape.Polygon))
                 {
                     CPolygon polygon = dataManager.shapeList[dataManager.shapeList.Count - 1] as CPolygon;
                     polygon.points.Remove(polygon.points[polygon.points.Count - 1]);
@@ -148,6 +148,7 @@ namespace Thang_Paint.Action
                     }
                 }
                 TakeSpaceRegion.setPointHeadTail(group);
+
                 group.isSelected = true;
                 dataManager.shapeList.Add(group);
                 viewPaint.refreshDrawing();
@@ -172,7 +173,7 @@ namespace Thang_Paint.Action
             public void onClickMouseDown(Point p)
        {
             dataManager.isNotNone = true;
-            if (dataManager.currentShape.Equals(CurrentShapeStatus.Void))
+            if (dataManager.currentShape.Equals(CurrentShape.Void))
             { 
                 dataManager.offAllShapeSelected();
                 viewPaint.refreshDrawing();
@@ -238,7 +239,7 @@ namespace Thang_Paint.Action
                 viewPaint.movingShape(dataManager.shapeToMove, dataManager.distanceXY(dataManager.cursorCurrent, p));
                 dataManager.cursorCurrent = p;
             }
-            else if (dataManager.currentShape.Equals(CurrentShapeStatus.Void))
+            else if (dataManager.currentShape.Equals(CurrentShape.Void))
             {
                 if (dataManager.isMovingMouse)
                 {
@@ -307,7 +308,7 @@ namespace Thang_Paint.Action
         {
             dataManager.isMouseDown = true;
             dataManager.offAllShapeSelected();
-            if (dataManager.currentShape.Equals(CurrentShapeStatus.Rectangle))
+            if (dataManager.currentShape.Equals(CurrentShape.Rectangle))
             {
                 dataManager.addEntity(new cRectangle
                 {
@@ -320,7 +321,7 @@ namespace Thang_Paint.Action
                     isFill = dataManager.isFill
                 });
             }
-            else if (dataManager.currentShape.Equals(CurrentShapeStatus.Line))
+            else if (dataManager.currentShape.Equals(CurrentShape.Line))
             {
                 dataManager.addEntity(new CLine
                 {
@@ -332,7 +333,7 @@ namespace Thang_Paint.Action
                     isFill = dataManager.isFill
                 });
             }
-            else if (dataManager.currentShape.Equals(CurrentShapeStatus.Ellipse))
+            else if (dataManager.currentShape.Equals(CurrentShape.Ellipse))
             {
                 dataManager.addEntity(new CElipse
                 {
@@ -345,7 +346,7 @@ namespace Thang_Paint.Action
                     isFill = dataManager.isFill
                 });
             }
-            else if (dataManager.currentShape.Equals(CurrentShapeStatus.Circle))
+            else if (dataManager.currentShape.Equals(CurrentShape.Circle))
             {
                 dataManager.addEntity(new CCircle
                 {
@@ -358,7 +359,7 @@ namespace Thang_Paint.Action
                     isFill = dataManager.isFill
                 });
             }
-            else if (dataManager.currentShape.Equals(CurrentShapeStatus.Polygon))
+            else if (dataManager.currentShape.Equals(CurrentShape.Polygon))
             {
                 if (!dataManager.isDrawingPolygon)
                 {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Thang_Paint.Utils
 {
-    public enum CurrentShapeStatus
+    public enum CurrentShape
     {
         Void,
         Line,

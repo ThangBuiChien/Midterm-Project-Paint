@@ -29,7 +29,7 @@ namespace Thang_Paint.Action
         {
             dataManager.offAllShapeSelected();
             viewPaint.refreshDrawing();
-            dataManager.currentShape = CurrentShapeStatus.Void;
+            dataManager.currentShape = CurrentShape.Void;
             viewPaint.setCursor(Cursors.Default);
         }
 

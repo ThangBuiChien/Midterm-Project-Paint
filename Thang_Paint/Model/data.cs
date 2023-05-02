@@ -37,7 +37,7 @@ namespace Thang_Paint.Model
         public bool isDrawingCurve { get; set; }
 
         //TODO: cho biết trạng thái hình hiện tại là hình nào
-        public CurrentShapeStatus currentShape { get; set; }
+        public CurrentShape currentShape { get; set; }
 
         //TODO: thiết lập trạng thái cho biết có phải người dùng đang vẽ đa giác hay không
         public bool isDrawingPolygon { get; set; }

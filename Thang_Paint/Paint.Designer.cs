@@ -57,8 +57,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
             this.btnUngroup = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -272,11 +272,11 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(142, 144);
+            this.label3.Location = new System.Drawing.Point(142, 133);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(46, 16);
+            this.label3.Size = new System.Drawing.Size(47, 16);
             this.label3.TabIndex = 14;
-            this.label3.Text = "Object";
+            this.label3.Text = "Shape";
             // 
             // btnPen
             // 
@@ -301,11 +301,11 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(47, 133);
+            this.label6.Location = new System.Drawing.Point(20, 133);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(46, 16);
+            this.label6.Size = new System.Drawing.Size(88, 16);
             this.label6.TabIndex = 21;
-            this.label6.Text = "Object";
+            this.label6.Text = "Drawing tools";
             // 
             // panel3
             // 
@@ -327,11 +327,11 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(237, 144);
+            this.label8.Location = new System.Drawing.Point(195, 133);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(46, 16);
+            this.label8.Size = new System.Drawing.Size(69, 16);
             this.label8.TabIndex = 23;
-            this.label8.Text = "Object";
+            this.label8.Text = "Properties";
             // 
             // label5
             // 
@@ -363,15 +363,6 @@
             this.panel4.Size = new System.Drawing.Size(241, 166);
             this.panel4.TabIndex = 23;
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(95, 133);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(46, 16);
-            this.label7.TabIndex = 22;
-            this.label7.Text = "Object";
-            // 
             // btnUngroup
             // 
             this.btnUngroup.Location = new System.Drawing.Point(130, 87);
@@ -381,6 +372,15 @@
             this.btnUngroup.Text = "Ungroup ";
             this.btnUngroup.UseVisualStyleBackColor = true;
             this.btnUngroup.Click += new System.EventHandler(this.btnUngroup_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(95, 133);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(46, 16);
+            this.label7.TabIndex = 22;
+            this.label7.Text = "Object";
             // 
             // Paint
             // 
