@@ -17,13 +17,13 @@ namespace Thang_Paint.Action
     {
         IVIew viewPaint;
 
-        data dataManager;
+        data storeData;
 
 
         public drawImp(IVIew viewPaint)
         {
             this.viewPaint = viewPaint;
-            dataManager = data.getInstance();
+            storeData = data.getInstance();
 
         }
 
@@ -68,7 +68,7 @@ namespace Thang_Paint.Action
 
         public void getDrawing(Graphics g)
         {
-            dataManager.shapeList.ForEach(shape =>
+            storeData.shapeList.ForEach(shape =>
             {
                 viewPaint.setDrawing(shape, g);
                 if (shape.isSelected)
@@ -77,7 +77,7 @@ namespace Thang_Paint.Action
                 }
 
             });
-            if (dataManager.isMovingMouse)
+            if (storeData.isMovingMouse)
             {
                 using (Pen pen = new Pen(Color.DarkBlue, 1)
                 {
@@ -85,39 +85,45 @@ namespace Thang_Paint.Action
                     DashStyle = DashStyle.Custom
                 })
                 {
-                    viewPaint.setDrawingRegionRectangle(pen, dataManager.rectangleRegion, g);
+                    viewPaint.setDrawingRegionRectangle(pen, storeData.rectangleRegion, g);
                 }
 
             }
         }
 
-        public void onClickDrawRectangle()
+        public void currentDrawRectangle()
         {
             setDefaultToDraw();
-            dataManager.currentShape = CurrentShape.Rectangle;
+            storeData.currentShape = CurrentShape.Rectangle;
         }
-        public void onClickDrawLine()
+
+        public void onClickDrawArc()
         {
             setDefaultToDraw();
-            dataManager.currentShape = CurrentShape.Line;
+            storeData.currentShape = CurrentShape.Arc;
+        }
+        public void currentDrawLine()
+        {
+            setDefaultToDraw();
+            storeData.currentShape = CurrentShape.Line;
 
         }
 
-        public void onClickDrawElipse()
+        public void currentDrawElipse()
         {
             setDefaultToDraw();
-            dataManager.currentShape = CurrentShape.Ellipse ;
+            storeData.currentShape = CurrentShape.Ellipse ;
         }
 
-        public void onClickDrawCircle()
+        public void currentDrawCircle()
         {
             setDefaultToDraw();
-            dataManager.currentShape = CurrentShape.Circle;
+            storeData.currentShape = CurrentShape.Circle;
         }
         public void onClickDrawPolygon()
         {
             setDefaultToDraw();
-            dataManager.currentShape = CurrentShape.Polygon;
+            storeData.currentShape = CurrentShape.Polygon;
 
         }
 
@@ -125,57 +131,57 @@ namespace Thang_Paint.Action
         {
             if (mouse == MouseButtons.Right)
             {
-                if (dataManager.currentShape.Equals(CurrentShape.Polygon))
+                if (storeData.currentShape.Equals(CurrentShape.Polygon))
                 {
-                    CPolygon polygon = dataManager.shapeList[dataManager.shapeList.Count - 1] as CPolygon;
+                    CPolygon polygon = storeData.shapeList[storeData.shapeList.Count - 1] as CPolygon;
                     polygon.points.Remove(polygon.points[polygon.points.Count - 1]);
-                    dataManager.isDrawingPolygon = false;
+                    storeData.isDrawingPolygon = false;
                    // FindRegion.setPointHeadTail(polygon);
                 }
             }
         }
         public void onClickDrawGroup()
         {
-            if (dataManager.shapeList.Count(shape => shape.isSelected) > 1)
+            if (storeData.shapeList.Count(shape => shape.isSelected) > 1)
             {
                 CGroupShape group = new CGroupShape();
-                for (int i = 0; i < dataManager.shapeList.Count; i++)
+                for (int i = 0; i < storeData.shapeList.Count; i++)
                 {
-                    if (dataManager.shapeList[i].isSelected)
+                    if (storeData.shapeList[i].isSelected)
                     {
-                        group.addShape(dataManager.shapeList[i]);
-                        dataManager.shapeList.RemoveAt(i--);
+                        group.addShape(storeData.shapeList[i]);
+                        storeData.shapeList.RemoveAt(i--);
                     }
                 }
                 TakeSpaceRegion.setPointHeadTail(group);
 
                 group.isSelected = true;
-                dataManager.shapeList.Add(group);
+                storeData.shapeList.Add(group);
                 viewPaint.refreshDrawing();
             }
         }
         public void onClickDrawUnGroup()
         {
-            if (dataManager.shapeList.Find(shape => shape.isSelected) is CGroupShape)
+            if (storeData.shapeList.Find(shape => shape.isSelected) is CGroupShape)
             {
-                CGroupShape group = (CGroupShape)dataManager.shapeList.Find(shape => shape.isSelected);
+                CGroupShape group = (CGroupShape)storeData.shapeList.Find(shape => shape.isSelected);
                 for(int i=0; i<group.Count; i++)
                 {
-                    dataManager.shapeList.Add(group[i]);
+                    storeData.shapeList.Add(group[i]);
                 }
               
-                dataManager.shapeList.Remove(group);
+                storeData.shapeList.Remove(group);
             }   
 
                 viewPaint.refreshDrawing();
         }
 
-            public void onClickMouseDown(Point p)
+            public void currentMouseDown(Point p)
        {
-            dataManager.isNotNone = true;
-            if (dataManager.currentShape.Equals(CurrentShape.Void))
+            storeData.isNotNone = true;
+            if (storeData.currentShape.Equals(CurrentShape.Void))
             { 
-                dataManager.offAllShapeSelected();
+                storeData.offAllShapeSelected();
                 viewPaint.refreshDrawing();
                 handleClickToSelect(p);
             }
@@ -188,69 +194,69 @@ namespace Thang_Paint.Action
 
         public void handleClickToSelect(Point p)
         {
-            for (int i = 0; i < dataManager.shapeList.Count; ++i)
+            for (int i = 0; i < storeData.shapeList.Count; ++i)
             {
-                if (dataManager.pointToResize != -1)
+                if (storeData.pointToResize != -1)
                 {
-                    dataManager.shapeList[i].changePoint(dataManager.pointToResize);
-                    dataManager.shapeToMove = dataManager.shapeList[i];
+                    storeData.shapeList[i].changePoint(storeData.pointToResize);
+                    storeData.shapeToMove = storeData.shapeList[i];
                     break;
                 }
-                else if (dataManager.shapeList[i].isHit(p))             //Cho hình đã chọn vô shape để di chuyển
+                else if (storeData.shapeList[i].isHit(p))             //Cho hình đã chọn vô shape để di chuyển
                 {
-                    dataManager.shapeToMove = dataManager.shapeList[i];
-                    dataManager.shapeList[i].isSelected = true;
+                    storeData.shapeToMove = storeData.shapeList[i];
+                    storeData.shapeList[i].isSelected = true;
                     break;
                     
                 }
 
             }
 
-            if (dataManager.pointToResize != -1)
+            if (storeData.pointToResize != -1)
             {
-                dataManager.cursorCurrent = p;
+                storeData.cursorCurrent = p;
             }
-            else if (dataManager.shapeToMove != null)       //Nếu đúng là chức năng di chuyển thì dánh dấu rồi chuyển qua 
+            else if (storeData.shapeToMove != null)       //Nếu đúng là chức năng di chuyển thì dánh dấu rồi chuyển qua 
             {
-                dataManager.isMovingShape = true;
-                dataManager.cursorCurrent = p;
+                storeData.isMovingShape = true;
+                storeData.cursorCurrent = p;
                 viewPaint.setCursor(Cursors.Default);
                 
                 
             }
             else
             {
-                dataManager.isMovingMouse = true;                               
-                dataManager.rectangleRegion = new Rectangle(p, new Size(0, 0));
+                storeData.isMovingMouse = true;                               
+                storeData.rectangleRegion = new Rectangle(p, new Size(0, 0));
             }
         }
 
 
 
-            public void onClickMouseMove(Point p)
+            public void currentMouseMove(Point p)
             {
-            if (dataManager.isMouseDown)
+            if (storeData.isMouseDown)
             {
-                dataManager.updatePointTail(p);
+                storeData.updatePointTail(p);
                 viewPaint.refreshDrawing();
             }
-            else if (dataManager.isMovingShape)
+            else if (storeData.isMovingShape)
             {
-                viewPaint.movingShape(dataManager.shapeToMove, dataManager.distanceXY(dataManager.cursorCurrent, p));
-                dataManager.cursorCurrent = p;
+                viewPaint.movingShape(storeData.shapeToMove, storeData.distanceXY(storeData.cursorCurrent, p));
+                storeData.cursorCurrent = p;
             }
-            else if (dataManager.currentShape.Equals(CurrentShape.Void))
+            else if (storeData.currentShape.Equals(CurrentShape.Void))
             {
-                if (dataManager.isMovingMouse)
+                if (storeData.isMovingMouse)
                 {
-                    dataManager.updateRectangleRegion(p);
+                    storeData.updateRectangleRegion(p);
                     viewPaint.refreshDrawing();
                 }
                 else
                 {
 
                     //TODO: Kiếm tra xem trong danh sách tồn tại hình nào chứa điểm p không
-                    if (dataManager.shapeList.Exists(shape => isInside(shape, p)))
+                    if (storeData.shapeList.Exists(shape => isInside(shape, p)))
                     {
                         viewPaint.setCursor(Cursors.SizeAll);
                     }
@@ -263,35 +269,35 @@ namespace Thang_Paint.Action
             }
            
 
-                if (dataManager.isDrawingPolygon)
+                if (storeData.isDrawingPolygon)
                 {
-                    CPolygon polygon = dataManager.shapeList[dataManager.shapeList.Count - 1] as CPolygon;
+                    CPolygon polygon = storeData.shapeList[storeData.shapeList.Count - 1] as CPolygon;
                     polygon.points[polygon.points.Count - 1] = p;
                     polygon.findHeadTailPoint();
                     viewPaint.refreshDrawing();
                 }
             }
 
-        public void onClickMouseUp()
+        public void currentMouseUp()
         {
-            dataManager.isMouseDown = false;
-             if (dataManager.isMovingShape)
+            storeData.isMouseDown = false;
+             if (storeData.isMovingShape)
             {
-                dataManager.isMovingShape = false;
-                dataManager.shapeToMove = null;
+                storeData.isMovingShape = false;
+                storeData.shapeToMove = null;
             }
-            else if (dataManager.isMovingMouse)
+            else if (storeData.isMovingMouse)
             {
-                dataManager.isMovingMouse = false;
-                dataManager.offAllShapeSelected();
+                storeData.isMovingMouse = false;
+                storeData.offAllShapeSelected();
 
                 //TODO: kiểm tra khi kéo chuột chọn một vùng thì có hình nào tồn tại bên
                 //trong hay là không, nếu có thì hình đó được chọn
-                for (int i = 0; i < dataManager.shapeList.Count; ++i)
+                for (int i = 0; i < storeData.shapeList.Count; ++i)
                 {
-                    if (dataManager.shapeList[i].isInRegion(dataManager.rectangleRegion))
+                    if (storeData.shapeList[i].isInRegion(storeData.rectangleRegion))
                     {
-                        dataManager.shapeList[i].isSelected = true;
+                        storeData.shapeList[i].isSelected = true;
                     }
                     
                 }
@@ -306,91 +312,104 @@ namespace Thang_Paint.Action
         }
         private void handleClickToDraw(Point p)
         {
-            dataManager.isMouseDown = true;
-            dataManager.offAllShapeSelected();
-            if (dataManager.currentShape.Equals(CurrentShape.Rectangle))
+            storeData.isMouseDown = true;
+            storeData.offAllShapeSelected();
+            if (storeData.currentShape.Equals(CurrentShape.Rectangle))
             {
-                dataManager.addEntity(new cRectangle
+                storeData.addEntity(new cRectangle
                 {
                     headPoint = p,
                     tailPoint = p,
-                    contourWidth = dataManager.lineSize,
-                    color = dataManager.colorCurrent,
-                    dashStyle = dataManager.dashStyleCurrent,
-                    brushStyle = dataManager.hatchStyleCurrent,
-                    isFill = dataManager.isFill
+                    contourWidth = storeData.lineSize,
+                    color = storeData.colorCurrent,
+                    dashStyle = storeData.dashStyleCurrent,
+                    brushStyle = storeData.hatchStyleCurrent,
+                    isFill = storeData.isFill
                 });
             }
-            else if (dataManager.currentShape.Equals(CurrentShape.Line))
+            else if (storeData.currentShape.Equals(CurrentShape.Line))
             {
-                dataManager.addEntity(new CLine
+                storeData.addEntity(new CLine
                 {
                     headPoint = p,
                     tailPoint = p,
-                    contourWidth = dataManager.lineSize,
-                    color = dataManager.colorCurrent,
-                    dashStyle = dataManager.dashStyleCurrent,   
-                    isFill = dataManager.isFill
+                    contourWidth = storeData.lineSize,
+                    color = storeData.colorCurrent,
+                    dashStyle = storeData.dashStyleCurrent,   
+                    isFill = storeData.isFill
                 });
             }
-            else if (dataManager.currentShape.Equals(CurrentShape.Ellipse))
+            else if (storeData.currentShape.Equals(CurrentShape.Ellipse))
             {
-                dataManager.addEntity(new CElipse
+                storeData.addEntity(new CElipse
                 {
                     headPoint = p,
                     tailPoint = p,
-                    contourWidth = dataManager.lineSize,
-                    color = dataManager.colorCurrent,
-                    dashStyle = dataManager.dashStyleCurrent,
-                    brushStyle = dataManager.hatchStyleCurrent,
-                    isFill = dataManager.isFill
+                    contourWidth = storeData.lineSize,
+                    color = storeData.colorCurrent,
+                    dashStyle = storeData.dashStyleCurrent,
+                    brushStyle = storeData.hatchStyleCurrent,
+                    isFill = storeData.isFill
                 });
             }
-            else if (dataManager.currentShape.Equals(CurrentShape.Circle))
+            else if (storeData.currentShape.Equals(CurrentShape.Circle))
             {
-                dataManager.addEntity(new CCircle
+                storeData.addEntity(new CCircle
                 {
                     headPoint = p,
                     tailPoint = p,
-                    contourWidth = dataManager.lineSize,
-                    color = dataManager.colorCurrent,
-                    dashStyle = dataManager.dashStyleCurrent,
-                    brushStyle = dataManager.hatchStyleCurrent,
-                    isFill = dataManager.isFill
+                    contourWidth = storeData.lineSize,
+                    color = storeData.colorCurrent,
+                    dashStyle = storeData.dashStyleCurrent,
+                    brushStyle = storeData.hatchStyleCurrent,
+                    isFill = storeData.isFill
                 });
             }
-            else if (dataManager.currentShape.Equals(CurrentShape.Polygon))
+            else if (storeData.currentShape.Equals(CurrentShape.Arc))
             {
-                if (!dataManager.isDrawingPolygon)
+                storeData.addEntity(new CArc
                 {
-                    dataManager.isDrawingPolygon = true;
+                    headPoint = p,
+                    tailPoint = p,
+                    contourWidth = storeData.lineSize,
+                    color = storeData.colorCurrent,
+                    dashStyle = storeData.dashStyleCurrent,
+                    brushStyle = storeData.hatchStyleCurrent,
+                    isFill = storeData.isFill
+                });
+            }
+            else if (storeData.currentShape.Equals(CurrentShape.Polygon))
+            {
+                if (!storeData.isDrawingPolygon)
+                {
+                    storeData.isDrawingPolygon = true;
                     CPolygon polygon = new CPolygon
                     {
-                        color = dataManager.colorCurrent,
-                        contourWidth = dataManager.lineSize,
-                        dashStyle = dataManager.dashStyleCurrent,
-                        brushStyle = dataManager.hatchStyleCurrent,
-                        isFill = dataManager.isFill
+                        color = storeData.colorCurrent,
+                        contourWidth = storeData.lineSize,
+                        dashStyle = storeData.dashStyleCurrent,
+                        brushStyle = storeData.hatchStyleCurrent,
+                        isFill = storeData.isFill
 
                     };
                     polygon.points.Add(p);
                     polygon.points.Add(p);
-                    dataManager.shapeList.Add(polygon);
+                    storeData.shapeList.Add(polygon);
                 }
                 else
                 {
-                    CPolygon polygon = dataManager.shapeList[dataManager.shapeList.Count - 1] as CPolygon;
+                    CPolygon polygon = storeData.shapeList[storeData.shapeList.Count - 1] as CPolygon;
                     polygon.points[polygon.points.Count - 1] = p;
                     polygon.points.Add(p);
                 }
 
-                dataManager.isMouseDown = false;
+                storeData.isMouseDown = false;
             }
            
         }
         private void setDefaultToDraw()
         {
-            dataManager.offAllShapeSelected();
+            storeData.offAllShapeSelected();
             viewPaint.refreshDrawing();
             viewPaint.setCursor(Cursors.Default);
         }

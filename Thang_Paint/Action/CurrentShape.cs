@@ -12,11 +12,9 @@ namespace Thang_Paint.Utils
         Line,
         Rectangle,
         Ellipse,
-        Square,
         Circle,
-        Curve,
-        Polygon,
-        Pen,
-        Eraser
+        Arc,
+        Polygon
+       
     }
 }

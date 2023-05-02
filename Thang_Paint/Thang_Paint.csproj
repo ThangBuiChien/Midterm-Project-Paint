@@ -50,6 +50,7 @@
     <Compile Include="Action\drawImp.cs" />
     <Compile Include="Action\IDraw.cs" />
     <Compile Include="Action\IUpdate.cs" />
+    <Compile Include="Model\CArc.cs" />
     <Compile Include="Model\CGroupShape.cs" />
     <Compile Include="Model\CPolygon.cs" />
     <Compile Include="Model\CCircle.cs" />

@@ -36,10 +36,10 @@ namespace Thang_Paint
             drawImp = new drawImp(this);
             //presenterAlter = new PresenterAlterImp(this);
             updateImp = new updateImp(this);
-            updateImp.onClickSelectColor(Color.Black, gr);
-            updateImp.onClickSelectDashStyle(DashStyle.Solid, gr);
-            updateImp.onClickSelectBrushStyle(HatchStyle.Horizontal, gr);
-            updateImp.onClickSelectSize(2, gr);
+            updateImp.changeColor(Color.Black, gr);
+            updateImp.changeDashStyle(DashStyle.Solid, gr);
+            updateImp.selectBrushStyle(HatchStyle.Horizontal, gr);
+            updateImp.changeSize(2, gr);
             this.KeyPreview = true;
             this.KeyDown += new KeyEventHandler(Paint_KeyDown);
 
@@ -105,23 +105,23 @@ namespace Thang_Paint
 
         private void button1_Click(object sender, EventArgs e)
         {
-            drawImp.onClickDrawRectangle();
+            drawImp.currentDrawRectangle();
         }
 
         private void panel1_MouseDown(object sender, MouseEventArgs e)
         {
-            drawImp.onClickMouseDown(e.Location);
+            drawImp.currentMouseDown(e.Location);
         }
 
         private void panel1_MouseMove(object sender, MouseEventArgs e)
         {
            // lbLocation.Text = e.Location.X + ", " + e.Location.Y + "px";
-            drawImp.onClickMouseMove(e.Location);
+            drawImp.currentMouseMove(e.Location);
         }
 
         private void panel1_MouseUp(object sender, MouseEventArgs e)
         {
-            drawImp.onClickMouseUp();
+            drawImp.currentMouseUp();
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -132,7 +132,7 @@ namespace Thang_Paint
 
         private void SBLineSize_Scroll(object sender, ScrollEventArgs e)
         {
-            updateImp.onClickSelectSize(SBLineSize.Value , gr);
+            updateImp.changeSize(SBLineSize.Value , gr);
         }
 
         private void Paint_Load(object sender, EventArgs e)
@@ -142,7 +142,7 @@ namespace Thang_Paint
 
         private void btnSelect_Click(object sender, EventArgs e)
         {
-            updateImp.onClickSelectMode();
+            updateImp.changeMode();
         }
 
         private void SBZoom_Scroll(object sender, ScrollEventArgs e)
@@ -151,7 +151,7 @@ namespace Thang_Paint
 
             //zoomFactor = 1.0f + (e.NewValue - e.OldValue) / 10.0f;
             zoomFactor = 1.0f + (float)SBZoom.Value / 100.0f;
-            updateImp.onClickSelectZoom(zoomFactor,gr);
+            updateImp.changeZoom(zoomFactor,gr);
             // force a repaint of the panel to update the graphics
             //   refreshDrawing();
            // PLMain.AutoScroll = true;
@@ -170,26 +170,26 @@ namespace Thang_Paint
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            updateImp.onClickDeleteShape();
+            updateImp.deleteShape();
         }
 
        
 
         private void btnLine_Click(object sender, EventArgs e)
         {
-            drawImp.onClickDrawLine();
+            drawImp.currentDrawLine();
 
         }
 
         private void btnElipse_Click(object sender, EventArgs e)
         {
-            drawImp.onClickDrawElipse();
+            drawImp.currentDrawElipse();
 
         }
 
         private void btnCircle_Click(object sender, EventArgs e)
         {
-            drawImp.onClickDrawCircle();
+            drawImp.currentDrawCircle();
 
         }
 
@@ -214,7 +214,7 @@ namespace Thang_Paint
             ColorDialog colorDialog = new ColorDialog();
             if (colorDialog.ShowDialog() == DialogResult.OK)
             {
-                updateImp.onClickSelectColor(colorDialog.Color, gr);
+                updateImp.changeColor(colorDialog.Color, gr);
             }
         }
 
@@ -226,7 +226,7 @@ namespace Thang_Paint
         private void btnFilled_Click(object sender, EventArgs e)
         {
             Button btn = sender as Button;
-            updateImp.onClickSelectFill(btn, gr);
+            updateImp.changeFill(btn, gr);
         }
 
         private void cbDash_SelectedIndexChanged(object sender, EventArgs e)
@@ -252,7 +252,7 @@ namespace Thang_Paint
             {
                 dashStyle = DashStyle.DashDotDot;
             }
-            updateImp.onClickSelectDashStyle(dashStyle, gr);
+            updateImp.changeDashStyle(dashStyle, gr);
 
 
 
@@ -262,12 +262,12 @@ namespace Thang_Paint
         {
             if (e.KeyCode == Keys.ControlKey)
             {
-                updateImp.onClickSelectMode();
+                updateImp.changeMode();
                 e.Handled = true;
             }
             if(e.KeyCode == Keys.Delete)
             {
-                updateImp.onClickDeleteShape();
+                updateImp.deleteShape();
 
             }
 
@@ -302,19 +302,25 @@ namespace Thang_Paint
             {
                 brushStyle = HatchStyle.DottedGrid;
             }
-            updateImp.onClickSelectBrushStyle(brushStyle, gr);
+            updateImp.selectBrushStyle(brushStyle, gr);
 
         }
 
         private void btnPen_Click(object sender, EventArgs e)
         {
-            updateImp.onClickSelectPen(gr);
+            updateImp.changePen(gr);
 
         }
 
         private void btnUngroup_Click(object sender, EventArgs e)
         {
             drawImp.onClickDrawUnGroup();
+
+        }
+
+        private void btcArc_Click(object sender, EventArgs e)
+        {
+            drawImp.onClickDrawArc();
 
         }
     }

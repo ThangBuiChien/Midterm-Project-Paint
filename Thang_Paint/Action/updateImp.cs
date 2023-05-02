@@ -25,7 +25,7 @@ namespace Thang_Paint.Action
             
         }
 
-        public void onClickSelectMode()
+        public void changeMode()
         {
             dataManager.offAllShapeSelected();
             viewPaint.refreshDrawing();
@@ -33,7 +33,7 @@ namespace Thang_Paint.Action
             viewPaint.setCursor(Cursors.Default);
         }
 
-        public void onClickSelectColor(System.Drawing.Color color, Graphics g)
+        public void changeColor(System.Drawing.Color color, Graphics g)
         {
             dataManager.colorCurrent = color;
            // viewPaint.setColor(color);
@@ -47,7 +47,7 @@ namespace Thang_Paint.Action
             }
         }
 
-        public void onClickSelectSize(int size, Graphics g)
+        public void changeSize(int size, Graphics g)
         {
             dataManager.lineSize = size;
             foreach (Shape item in dataManager.shapeList)
@@ -62,7 +62,7 @@ namespace Thang_Paint.Action
             }
         }
 
-        public void onClickSelectFill(Button btn, Graphics g)
+        public void changeFill(Button btn, Graphics g)
         {
             dataManager.isFill = !dataManager.isFill;
             if (btn.BackColor.Equals(Color.LightCyan))
@@ -71,7 +71,7 @@ namespace Thang_Paint.Action
                 viewPaint.setColor(btn, Color.LightCyan);
         }
 
-        public void onClickSelectZoom(float zoomFactor, Graphics g)
+        public void changeZoom(float zoomFactor, Graphics g)
         {
             //dataManager.offAllShapeSelected();
             g.ScaleTransform(zoomFactor, zoomFactor);
@@ -81,7 +81,7 @@ namespace Thang_Paint.Action
 
 
         }
-        public void onClickDeleteShape()
+        public void deleteShape()
         {
             for (int i = 0; i < dataManager.shapeList.Count; i++)
             {
@@ -93,7 +93,7 @@ namespace Thang_Paint.Action
             viewPaint.refreshDrawing();
         }
 
-        public void onClickSelectDashStyle(DashStyle dashStyle, Graphics g)
+        public void changeDashStyle(DashStyle dashStyle, Graphics g)
         {
             dataManager.dashStyleCurrent = dashStyle;
             foreach (Shape item in dataManager.shapeList)
@@ -109,7 +109,7 @@ namespace Thang_Paint.Action
 
         }
 
-        public void onClickSelectBrushStyle(HatchStyle hatchStyle, Graphics g)
+        public void selectBrushStyle(HatchStyle hatchStyle, Graphics g)
         {
             dataManager.hatchStyleCurrent = hatchStyle;
             foreach (Shape item in dataManager.shapeList)
@@ -125,7 +125,7 @@ namespace Thang_Paint.Action
 
         }
 
-        public void onClickSelectPen(Graphics g)
+        public void changePen(Graphics g)
         {
             dataManager.isFill = false;
         }

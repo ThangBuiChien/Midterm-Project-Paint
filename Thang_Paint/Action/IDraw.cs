@@ -11,13 +11,13 @@ namespace Thang_Paint.Action
     interface IDraw
     {
         void getDrawing(Graphics g);
-        void onClickMouseDown(Point p);
-        void onClickMouseMove(Point p);
-        void onClickMouseUp();
-        void onClickDrawLine();
-        void onClickDrawRectangle();
-        void onClickDrawElipse();
-        void onClickDrawCircle();
+        void currentMouseDown(Point p);
+        void currentMouseMove(Point p);
+        void currentMouseUp();
+        void currentDrawLine();
+        void currentDrawRectangle();
+        void currentDrawElipse();
+        void currentDrawCircle();
 
         void drawRegionForShape(Shape shape, Graphics g);
 

@@ -113,7 +113,7 @@ namespace Thang_Paint
             {
                 using (GraphicsPath path = paths[i])
                 {
-                    if (shapes[i] is cRectangle || shapes[i] is CElipse || shapes[i] is CPolygon || shapes[i] is CCircle)
+                    if (shapes[i] is cRectangle || shapes[i] is CElipse || shapes[i] is CPolygon || shapes[i] is CCircle || shapes[i] is CArc)
                     {
                         if (shapes[i].isFill)
                         {
@@ -153,7 +153,7 @@ namespace Thang_Paint
             {
                 using (GraphicsPath path = paths[i])
                 {
-                    if (shapes[i] is cRectangle || shapes[i] is CElipse)
+                    if (shapes[i] is cRectangle || shapes[i] is CElipse || shapes[i] is CCircle)
                     {
                         if (((cRectangle)shapes[i]).isFill)
                         {

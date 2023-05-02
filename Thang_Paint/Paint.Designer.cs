@@ -183,6 +183,7 @@
             this.btcArc.TabIndex = 12;
             this.btcArc.Text = "Arc";
             this.btcArc.UseVisualStyleBackColor = true;
+            this.btcArc.Click += new System.EventHandler(this.btcArc_Click);
             // 
             // btnPolygon
             // 
