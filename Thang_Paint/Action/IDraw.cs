@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using Thang_Paint.Model;
 
 namespace Thang_Paint.Action
@@ -18,6 +19,11 @@ namespace Thang_Paint.Action
         void currentDrawRectangle();
         void currentDrawElipse();
         void currentDrawCircle();
+        void currentDrawPolygon();
+        void currentStopDrawing(MouseButtons mouse);
+        void currentDrawGroup();
+        void currentStopDrawUnGroup();
+
 
         void drawRegionForShape(Shape shape, Graphics g);
 

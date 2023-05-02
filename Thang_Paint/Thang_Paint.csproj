@@ -69,7 +69,7 @@
     <Compile Include="Model\Shape.cs" />
     <Compile Include="Action\TakeSpaceRegion.cs" />
     <Compile Include="Action\CurrentShape.cs" />
-    <Compile Include="view\IVIew.cs" />
+    <Compile Include="IPaint\IVIew.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

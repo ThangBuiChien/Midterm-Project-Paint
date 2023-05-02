@@ -22,10 +22,14 @@ namespace Thang_Paint.Action
 
         void changeDashStyle(DashStyle dashStyle, Graphics g);
 
-       
+        void changeBrushStyle(HatchStyle hatchStyle, Graphics g);
+
+
         void changeFill(Button btn, Graphics g);
 
         void changePen(Graphics g);
+
+
 
 
         void changeZoom(float zoomFactor, Graphics g);

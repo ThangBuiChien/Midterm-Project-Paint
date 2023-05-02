@@ -68,6 +68,27 @@ namespace Thang_Paint
                             rect.tailPoint.X - rect.headPoint.X,
                             rect.tailPoint.Y - rect.headPoint.Y));
                     }
+                    else if (shapes[i] is CCircle)
+                    {
+                        CCircle circle = (CCircle)shapes[i];
+
+                        path.AddRectangle(new RectangleF(circle.headPoint.X,
+                            circle.headPoint.Y,
+                            circle.tailPoint.X - circle.headPoint.X,
+                            circle.tailPoint.Y - circle.headPoint.Y));
+                    }
+
+                    else if (shapes[i] is CArc)
+                    {
+                        CArc arc = (CArc)shapes[i];
+
+                        path.AddArc(new RectangleF(arc.headPoint.X,
+                            arc.headPoint.Y,
+                            arc.tailPoint.X - arc.headPoint.X,
+                            arc.tailPoint.Y - arc.headPoint.Y), 0, -180);
+                    }
+
+
                     else if (shapes[i] is CPolygon)
                     {
                         CPolygon polygon = (CPolygon)shapes[i];

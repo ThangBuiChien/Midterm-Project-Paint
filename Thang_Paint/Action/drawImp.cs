@@ -120,14 +120,14 @@ namespace Thang_Paint.Action
             setDefaultToDraw();
             storeData.currentShape = CurrentShape.Circle;
         }
-        public void onClickDrawPolygon()
+        public void currentDrawPolygon()
         {
             setDefaultToDraw();
             storeData.currentShape = CurrentShape.Polygon;
 
         }
 
-        public void onClickStopDrawing(MouseButtons mouse)
+        public void currentStopDrawing(MouseButtons mouse)
         {
             if (mouse == MouseButtons.Right)
             {
@@ -140,7 +140,7 @@ namespace Thang_Paint.Action
                 }
             }
         }
-        public void onClickDrawGroup()
+        public void currentDrawGroup()
         {
             if (storeData.shapeList.Count(shape => shape.isSelected) > 1)
             {
@@ -160,7 +160,7 @@ namespace Thang_Paint.Action
                 viewPaint.refreshDrawing();
             }
         }
-        public void onClickDrawUnGroup()
+        public void currentStopDrawUnGroup()
         {
             if (storeData.shapeList.Find(shape => shape.isSelected) is CGroupShape)
             {

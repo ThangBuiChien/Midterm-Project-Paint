@@ -21,7 +21,7 @@ namespace Thang_Paint.view
            
             void setColor(Color color);
 
-            
+            //custome button
             void setColor(Button btn, Color color);
 
            
@@ -34,7 +34,7 @@ namespace Thang_Paint.view
         
             void movingShape(Shape shape, Point distance);
 
-      //  void setDrawingCurveSelected(List<Point> points, Brush brush, Graphics g);
+            void setDrawingCurveSelected(List<Point> points, Brush brush, Graphics g);
 
     }
 

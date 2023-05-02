@@ -38,7 +38,7 @@ namespace Thang_Paint
             updateImp = new updateImp(this);
             updateImp.changeColor(Color.Black, gr);
             updateImp.changeDashStyle(DashStyle.Solid, gr);
-            updateImp.selectBrushStyle(HatchStyle.Horizontal, gr);
+            updateImp.changeBrushStyle(HatchStyle.Horizontal, gr);
             updateImp.changeSize(2, gr);
             this.KeyPreview = true;
             this.KeyDown += new KeyEventHandler(Paint_KeyDown);
@@ -195,18 +195,18 @@ namespace Thang_Paint
 
         private void btnPolygon_Click(object sender, EventArgs e)
         {
-            drawImp.onClickDrawPolygon();
+            drawImp.currentDrawPolygon();
         }
 
         private void PLMain_MouseClick(object sender, MouseEventArgs e)
         {
-            drawImp.onClickStopDrawing(e.Button);
+            drawImp.currentStopDrawing(e.Button);
 
         }
 
         private void btnGroup_Click(object sender, EventArgs e)
         {
-            drawImp.onClickDrawGroup();
+            drawImp.currentDrawGroup();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -302,7 +302,7 @@ namespace Thang_Paint
             {
                 brushStyle = HatchStyle.DottedGrid;
             }
-            updateImp.selectBrushStyle(brushStyle, gr);
+            updateImp.changeBrushStyle(brushStyle, gr);
 
         }
 
@@ -314,7 +314,7 @@ namespace Thang_Paint
 
         private void btnUngroup_Click(object sender, EventArgs e)
         {
-            drawImp.onClickDrawUnGroup();
+            drawImp.currentStopDrawUnGroup();
 
         }
 

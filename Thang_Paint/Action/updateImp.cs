@@ -109,7 +109,7 @@ namespace Thang_Paint.Action
 
         }
 
-        public void selectBrushStyle(HatchStyle hatchStyle, Graphics g)
+        public void changeBrushStyle(HatchStyle hatchStyle, Graphics g)
         {
             dataManager.hatchStyleCurrent = hatchStyle;
             foreach (Shape item in dataManager.shapeList)
