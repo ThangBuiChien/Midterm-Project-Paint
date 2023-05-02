@@ -174,9 +174,9 @@ namespace Thang_Paint
             {
                 using (GraphicsPath path = paths[i])
                 {
-                    if (shapes[i] is cRectangle || shapes[i] is CElipse || shapes[i] is CCircle)
+                    if (shapes[i] is cRectangle || shapes[i] is CElipse || shapes[i] is CCircle || shapes[i] is CPolygon  || shapes[i] is CArc) 
                     {
-                        if (((cRectangle)shapes[i]).isFill)
+                        if (shapes[i].isFill) //if (((cRectangle)shapes[i]).isFill)
                         {
                             using (Brush brush = new SolidBrush(Color.Black))
                             {
@@ -197,6 +197,7 @@ namespace Thang_Paint
                             }
                         }
                     }
+                    
                     else if (!(shapes[i] is CGroupShape))
                     {
                         using (Pen pen = new Pen(Color.Black, contourWidth + 3))
