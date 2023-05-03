@@ -67,8 +67,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Model\CRectangle.cs" />
     <Compile Include="Model\Shape.cs" />
-    <Compile Include="Action\TakeSpaceRegion.cs" />
-    <Compile Include="Action\CurrentShape.cs" />
+    <Compile Include="tools\solvingFlicker.cs" />
+    <Compile Include="tools\TakeSpaceRegion.cs" />
+    <Compile Include="tools\CurrentShape.cs" />
     <Compile Include="IPaint\IVIew.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -176,7 +176,7 @@ namespace Thang_Paint
                 {
                     if (shapes[i] is cRectangle || shapes[i] is CElipse || shapes[i] is CCircle || shapes[i] is CPolygon  || shapes[i] is CArc) 
                     {
-                        if (shapes[i].isFill) //if (((cRectangle)shapes[i]).isFill)
+                        if (shapes[i].isFill) 
                         {
                             using (Brush brush = new SolidBrush(Color.Black))
                             {

@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Thang_Paint.Action;
 using Thang_Paint.Model;
+using Thang_Paint.tools;
 using Thang_Paint.view;
 
 namespace Thang_Paint
@@ -27,6 +28,7 @@ namespace Thang_Paint
         {
             InitializeComponent();
             initComponents();
+            this.PLMain.setDoubleBuffered();
             gr = PLMain.CreateGraphics();
            
 
