@@ -74,7 +74,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Model\ClassDiagram1.cd" />
+    <None Include="Model\shapeDiagram.cd" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Paint.resx">

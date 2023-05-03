@@ -22,58 +22,60 @@ namespace Thang_Paint
             this.color = color;
         }
 
-        protected override GraphicsPath gpPath {
+        public override GraphicsPath gpPath {
 
-            get
+           
+                get
             {
-                GraphicsPath path = new GraphicsPath();
-                int startAngle = 0;
-                int sweepAngle = -180;
+                    GraphicsPath path = new GraphicsPath();
+                    int startAngle = 0;
+                    int sweepAngle = -180;
 
-                if (headPoint.Y > tailPoint.Y) 
-                {
-                    startAngle = 0;
-                    sweepAngle = 180;
-                }
-                if (Math.Abs(tailPoint.Y - headPoint.Y) == 0 && Math.Abs(tailPoint.X - headPoint.X) == 0)
-                {
-                    Rectangle rect = new Rectangle(
-                     Math.Min(headPoint.X, tailPoint.X),
-                     Math.Min(headPoint.Y, tailPoint.Y),
-                     Math.Abs(tailPoint.X - headPoint.X + 10),
-                     Math.Abs(tailPoint.Y - headPoint.Y + 10));
-                    path.AddArc(rect, startAngle, sweepAngle);
-                }
-                else if (Math.Abs(tailPoint.Y - headPoint.Y) == 0)
-                {
-                    Rectangle rect = new Rectangle(
-                     Math.Min(headPoint.X, tailPoint.X),
-                     Math.Min(headPoint.Y, tailPoint.Y),
-                     Math.Abs(tailPoint.X - headPoint.X),
-                     Math.Abs(tailPoint.Y - headPoint.Y + 10));
-                    path.AddArc(rect, startAngle, sweepAngle);
-                }
-                else if (Math.Abs(tailPoint.X - headPoint.X) == 0)
-                {
-                    Rectangle rect = new Rectangle(
-                    Math.Min(headPoint.X, tailPoint.X),
-                    Math.Min(headPoint.Y, tailPoint.Y),
-                    Math.Abs(tailPoint.X - headPoint.X + 10),
-                    Math.Abs(tailPoint.Y - headPoint.Y));
-                    path.AddArc(rect, startAngle, sweepAngle);
-                }
-                else
-                {
-                    Rectangle rect = new Rectangle(
-                      Math.Min(headPoint.X, tailPoint.X),
-                      Math.Min(headPoint.Y, tailPoint.Y),
-                      Math.Abs(tailPoint.X - headPoint.X),
-                      Math.Abs(tailPoint.Y - headPoint.Y));
-                    path.AddArc(rect, startAngle, sweepAngle);
-                }
+                    if (headPoint.Y > tailPoint.Y)
+                    {
+                        startAngle = 0;
+                        sweepAngle = 180;
+                    }
+                    if (Math.Abs(tailPoint.Y - headPoint.Y) == 0 && Math.Abs(tailPoint.X - headPoint.X) == 0)
+                    {
+                        Rectangle rect = new Rectangle(
+                         Math.Min(headPoint.X, tailPoint.X),
+                         Math.Min(headPoint.Y, tailPoint.Y),
+                         Math.Abs(tailPoint.X - headPoint.X + 10),
+                         Math.Abs(tailPoint.Y - headPoint.Y + 10));
+                        path.AddArc(rect, startAngle, sweepAngle);
+                    }
+                    else if (Math.Abs(tailPoint.Y - headPoint.Y) == 0)
+                    {
+                        Rectangle rect = new Rectangle(
+                         Math.Min(headPoint.X, tailPoint.X),
+                         Math.Min(headPoint.Y, tailPoint.Y),
+                         Math.Abs(tailPoint.X - headPoint.X),
+                         Math.Abs(tailPoint.Y - headPoint.Y + 10));
+                        path.AddArc(rect, startAngle, sweepAngle);
+                    }
+                    else if (Math.Abs(tailPoint.X - headPoint.X) == 0)
+                    {
+                        Rectangle rect = new Rectangle(
+                        Math.Min(headPoint.X, tailPoint.X),
+                        Math.Min(headPoint.Y, tailPoint.Y),
+                        Math.Abs(tailPoint.X - headPoint.X + 10),
+                        Math.Abs(tailPoint.Y - headPoint.Y));
+                        path.AddArc(rect, startAngle, sweepAngle);
+                    }
+                    else
+                    {
+                        Rectangle rect = new Rectangle(
+                          Math.Min(headPoint.X, tailPoint.X),
+                          Math.Min(headPoint.Y, tailPoint.Y),
+                          Math.Abs(tailPoint.X - headPoint.X),
+                          Math.Abs(tailPoint.Y - headPoint.Y));
+                        path.AddArc(rect, startAngle, sweepAngle);
+                    }
 
-                return path;
-            }
+                    return path;
+                }
+            
         }
 
         public override object copy(Graphics gp)
@@ -132,5 +134,7 @@ namespace Thang_Paint
 
             return inside;
         }
+
+        
     }
 }

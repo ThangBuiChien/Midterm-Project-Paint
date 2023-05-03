@@ -28,31 +28,19 @@ namespace Thang_Paint.Model
 
 
 
-        protected override GraphicsPath gpPath {
+        public override GraphicsPath gpPath {
             get
             {
                 GraphicsPath path = new GraphicsPath();
 
-                if (tailPoint.X < headPoint.X && tailPoint.Y < headPoint.Y)
-                {
-                    path.AddRectangle(new System.Drawing.Rectangle(tailPoint,
-                        new Size(headPoint.X - tailPoint.X, headPoint.Y - tailPoint.Y)));
-                }
-                else if (headPoint.X > tailPoint.X && headPoint.Y < tailPoint.Y)
-                {
-                    path.AddRectangle(new System.Drawing.Rectangle(new Point(tailPoint.X, headPoint.Y),
-                        new Size(headPoint.X - tailPoint.X, tailPoint.Y - headPoint.Y)));
-                }
-                else if (headPoint.X < tailPoint.X && headPoint.Y > tailPoint.Y)
-                {
-                    path.AddRectangle(new System.Drawing.Rectangle(new Point(headPoint.X, tailPoint.Y),
-                        new Size(tailPoint.X - headPoint.X, headPoint.Y - tailPoint.Y)));
-                }
-                else
-                {
-                    path.AddRectangle(new System.Drawing.Rectangle(headPoint,
-                        new Size(tailPoint.X - headPoint.X, tailPoint.Y - headPoint.Y)));
-                }
+                // Define the coordinates of the rectangle corners
+                float x1 = Math.Min(headPoint.X, tailPoint.X);
+                float y1 = Math.Min(headPoint.Y, tailPoint.Y);
+                float x2 = Math.Max(headPoint.X, tailPoint.X);
+                float y2 = Math.Max(headPoint.Y, tailPoint.Y);
+
+                RectangleF rect = new RectangleF(x1, y1, x2 - x1, y2 - y1);
+                path.AddRectangle(rect);
 
                 return path;
             }

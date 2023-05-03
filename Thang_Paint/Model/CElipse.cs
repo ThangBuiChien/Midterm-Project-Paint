@@ -21,35 +21,21 @@ namespace Thang_Paint
             this.color = color;
         }
 
-        protected override GraphicsPath gpPath
+        public override GraphicsPath gpPath
         {
             get
             {
                 GraphicsPath path = new GraphicsPath();
 
-                
+                // Define the center point and dimensions of the ellipse
+                float centerX = (headPoint.X + tailPoint.X) / 2f;
+                float centerY = (headPoint.Y + tailPoint.Y) / 2f;
+                float width = Math.Abs(headPoint.X - tailPoint.X);
+                float height = Math.Abs(headPoint.Y - tailPoint.Y);
 
-                if (tailPoint.X < headPoint.X && tailPoint.Y < headPoint.Y)
-                {
-                    path.AddEllipse(new System.Drawing.Rectangle(tailPoint,
-                        new Size(headPoint.X - tailPoint.X, headPoint.Y - tailPoint.Y)));
-                }
-                else if (headPoint.X > tailPoint.X && headPoint.Y < tailPoint.Y)
-                {
-                    path.AddEllipse(new System.Drawing.Rectangle(new Point(tailPoint.X, headPoint.Y),
-                        new Size(headPoint.X - tailPoint.X, tailPoint.Y - headPoint.Y)));
-                }
-                else if (headPoint.X < tailPoint.X && headPoint.Y > tailPoint.Y)
-                {
-                    path.AddEllipse(new System.Drawing.Rectangle(new Point(headPoint.X, tailPoint.Y),
-                        new Size(tailPoint.X - headPoint.X, headPoint.Y - tailPoint.Y)));
-                }
-                else
-                {
-                    path.AddEllipse(new System.Drawing.Rectangle(headPoint,
-                        new Size(tailPoint.X - headPoint.X, tailPoint.Y - headPoint.Y)));
-                }
-
+                // Add the ellipse to the path
+                RectangleF rect = new RectangleF(centerX - width / 2f, centerY - height / 2f, width, height);
+                path.AddEllipse(rect);
                 return path;
             }
         }

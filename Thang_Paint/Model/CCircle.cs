@@ -20,7 +20,7 @@ namespace Thang_Paint
             this.color = color;
         }
 
-        protected override GraphicsPath gpPath
+        public override GraphicsPath gpPath
         {
             get
             {

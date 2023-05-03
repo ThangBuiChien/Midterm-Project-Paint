@@ -12,7 +12,7 @@ namespace Thang_Paint.Action
     internal interface IUpdate
     {
 
-        void changeMode();
+        void selectMode();
 
        
         void changeColor(Color color, Graphics g);
@@ -34,6 +34,8 @@ namespace Thang_Paint.Action
 
         void changeZoom(float zoomFactor, Graphics g);
          void deleteShape();
+
+        void clearAll();
 
     }
 }

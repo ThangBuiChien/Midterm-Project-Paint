@@ -25,7 +25,7 @@ namespace Thang_Paint
             points = new List<Point>();
         }
 
-        protected override GraphicsPath gpPath
+        public override GraphicsPath gpPath
         {
             get
             {

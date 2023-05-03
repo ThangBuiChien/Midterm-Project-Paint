@@ -53,6 +53,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnClearAll = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -207,7 +208,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(483, 46);
+            this.button2.Location = new System.Drawing.Point(474, 44);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(100, 80);
             this.button2.TabIndex = 15;
@@ -269,10 +270,11 @@
             this.panel1.Controls.Add(this.btnCircle);
             this.panel1.Controls.Add(this.btcArc);
             this.panel1.Controls.Add(this.btnPolygon);
-            this.panel1.Location = new System.Drawing.Point(55, 2);
+            this.panel1.Location = new System.Drawing.Point(12, 2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(394, 166);
             this.panel1.TabIndex = 19;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint_1);
             // 
             // label3
             // 
@@ -299,7 +301,7 @@
             this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.btnFilled);
             this.panel2.Controls.Add(this.btnPen);
-            this.panel2.Location = new System.Drawing.Point(455, 2);
+            this.panel2.Location = new System.Drawing.Point(429, 2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(134, 166);
             this.panel2.TabIndex = 21;
@@ -316,6 +318,7 @@
             // panel3
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.btnClearAll);
             this.panel3.Controls.Add(this.label8);
             this.panel3.Controls.Add(this.label5);
             this.panel3.Controls.Add(this.label4);
@@ -326,10 +329,20 @@
             this.panel3.Controls.Add(this.cbBrushStyle);
             this.panel3.Controls.Add(this.SBZoom);
             this.panel3.Controls.Add(this.cbDash);
-            this.panel3.Location = new System.Drawing.Point(872, 2);
+            this.panel3.Location = new System.Drawing.Point(848, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(628, 166);
+            this.panel3.Size = new System.Drawing.Size(734, 166);
             this.panel3.TabIndex = 22;
+            // 
+            // btnClearAll
+            // 
+            this.btnClearAll.Location = new System.Drawing.Point(600, 42);
+            this.btnClearAll.Name = "btnClearAll";
+            this.btnClearAll.Size = new System.Drawing.Size(82, 84);
+            this.btnClearAll.TabIndex = 24;
+            this.btnClearAll.Text = "clear all";
+            this.btnClearAll.UseVisualStyleBackColor = true;
+            this.btnClearAll.Click += new System.EventHandler(this.btnClearAll_Click);
             // 
             // label8
             // 
@@ -366,7 +379,7 @@
             this.panel4.Controls.Add(this.btnGroup);
             this.panel4.Controls.Add(this.btnSelect);
             this.panel4.Controls.Add(this.btnDelete);
-            this.panel4.Location = new System.Drawing.Point(609, 2);
+            this.panel4.Location = new System.Drawing.Point(588, 2);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(241, 166);
             this.panel4.TabIndex = 23;
@@ -394,7 +407,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1782, 725);
+            this.ClientSize = new System.Drawing.Size(1735, 725);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
@@ -450,5 +463,6 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnUngroup;
+        private System.Windows.Forms.Button btnClearAll;
     }
 }

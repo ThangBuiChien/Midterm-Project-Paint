@@ -196,13 +196,8 @@ namespace Thang_Paint.Action
         {
             for (int i = 0; i < storeData.shapeList.Count; ++i)
             {
-                if (storeData.pointToResize != -1)
-                {
-                    storeData.shapeList[i].changePoint(storeData.pointToResize);
-                    storeData.shapeToMove = storeData.shapeList[i];
-                    break;
-                }
-                else if (storeData.shapeList[i].isHit(p))             //Cho hình đã chọn vô shape để di chuyển
+                
+                if (storeData.shapeList[i].isHit(p))             //Cho hình đã chọn vô shape để di chuyển
                 {
                     storeData.shapeToMove = storeData.shapeList[i];
                     storeData.shapeList[i].isSelected = true;
@@ -212,11 +207,8 @@ namespace Thang_Paint.Action
 
             }
 
-            if (storeData.pointToResize != -1)
-            {
-                storeData.cursorCurrent = p;
-            }
-            else if (storeData.shapeToMove != null)       //Nếu đúng là chức năng di chuyển thì dánh dấu rồi chuyển qua 
+            
+            if (storeData.shapeToMove != null)       //Nếu đúng là chức năng di chuyển thì dánh dấu rồi chuyển qua 
             {
                 storeData.isMovingShape = true;
                 storeData.cursorCurrent = p;
@@ -291,8 +283,7 @@ namespace Thang_Paint.Action
                 storeData.isMovingMouse = false;
                 storeData.offAllShapeSelected();
 
-                //TODO: kiểm tra khi kéo chuột chọn một vùng thì có hình nào tồn tại bên
-                //trong hay là không, nếu có thì hình đó được chọn
+                
                 for (int i = 0; i < storeData.shapeList.Count; ++i)
                 {
                     if (storeData.shapeList[i].isInRegion(storeData.rectangleRegion))

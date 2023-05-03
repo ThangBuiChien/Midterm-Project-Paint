@@ -49,18 +49,18 @@
       <FileName>Model\CPolygon.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Thang_Paint.CGroupShape">
-    <Position X="10.75" Y="4.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAEAAgAACAAAAAQAAAAAAAICAAAAAAAABCg=</HashCode>
-      <FileName>Model\CGroupShape.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="Thang_Paint.CArc">
     <Position X="8.75" Y="0.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAEAAgAAAAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
       <FileName>Model\CArc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Thang_Paint.CGroupShape">
+    <Position X="10.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAgAACAAAAAQAAAAAAAICAAAAAAAABCg=</HashCode>
+      <FileName>Model\CGroupShape.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

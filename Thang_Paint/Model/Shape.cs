@@ -24,7 +24,7 @@ namespace Thang_Paint.Model
         public Point tailPoint { get; set; }
 
 
-        protected abstract GraphicsPath gpPath { get; }
+        public abstract GraphicsPath gpPath { get; }
 
 
         public Color color { get; set; }
@@ -64,7 +64,7 @@ namespace Thang_Paint.Model
                 headPoint.Y >= rectangle.Y &&
                 tailPoint.Y <= rectangle.Y + rectangle.Height;
         }
-        public Rectangle getRectangle()
+        public virtual Rectangle getRectangle()
         {
             return new Rectangle(headPoint.X,
                 headPoint.Y,

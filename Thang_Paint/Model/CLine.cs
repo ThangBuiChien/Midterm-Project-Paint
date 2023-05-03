@@ -5,6 +5,7 @@ using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 using Thang_Paint.Model;
 using static System.Windows.Forms.LinkLabel;
 
@@ -22,7 +23,7 @@ namespace Thang_Paint
             name = "Line";
             this.color = color;
         }
-        protected override GraphicsPath gpPath
+        public override GraphicsPath gpPath
         {
             get
             {

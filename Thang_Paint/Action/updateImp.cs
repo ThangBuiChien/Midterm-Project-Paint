@@ -25,7 +25,7 @@ namespace Thang_Paint.Action
             
         }
 
-        public void changeMode()
+        public void selectMode()
         {
             dataManager.offAllShapeSelected();
             viewPaint.refreshDrawing();
@@ -89,6 +89,17 @@ namespace Thang_Paint.Action
                 {
                     dataManager.shapeList.RemoveAt(i--);
                 }
+            }
+            viewPaint.refreshDrawing();
+        }
+
+        public void clearAll()
+        {
+            for (int i = 0; i < dataManager.shapeList.Count; i++)
+            {
+                
+                    dataManager.shapeList.RemoveAt(i--);
+                
             }
             viewPaint.refreshDrawing();
         }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -34,7 +35,7 @@ namespace Thang_Paint
             }
         }
 
-        protected override GraphicsPath gpPath => throw new NotImplementedException();
+        public override GraphicsPath gpPath => throw new NotImplementedException(); // return arr of gp not just only gp so we need a new gpPath methode
 
         private GraphicsPath[] graphicsPaths
         {
@@ -45,56 +46,7 @@ namespace Thang_Paint
                 for (int i = 0; i < shapes.Count; i++)
                 {
                     GraphicsPath path = new GraphicsPath();
-                    if (shapes[i] is CLine)
-                    {
-                        CLine line = (CLine)shapes[i];
-                        path.AddLine(line.headPoint, line.tailPoint);
-                    }
-
-                    else if (shapes[i] is CElipse)
-                    {
-                        CElipse ellipse = (CElipse)shapes[i];
-                        path.AddEllipse(new Rectangle(ellipse.headPoint.X,
-                            ellipse.headPoint.Y,
-                            ellipse.tailPoint.X - ellipse.headPoint.X,
-                            ellipse.tailPoint.Y - ellipse.headPoint.Y));
-                    }
-                    else if (shapes[i] is cRectangle)
-                    {
-                        cRectangle rect = (cRectangle)shapes[i];
-
-                        path.AddRectangle(new RectangleF(rect.headPoint.X,
-                            rect.headPoint.Y,
-                            rect.tailPoint.X - rect.headPoint.X,
-                            rect.tailPoint.Y - rect.headPoint.Y));
-                    }
-                    else if (shapes[i] is CCircle)
-                    {
-                        CCircle circle = (CCircle)shapes[i];
-
-                        path.AddRectangle(new RectangleF(circle.headPoint.X,
-                            circle.headPoint.Y,
-                            circle.tailPoint.X - circle.headPoint.X,
-                            circle.tailPoint.Y - circle.headPoint.Y));
-                    }
-
-                    else if (shapes[i] is CArc)
-                    {
-                        CArc arc = (CArc)shapes[i];
-
-                        path.AddArc(new RectangleF(arc.headPoint.X,
-                            arc.headPoint.Y,
-                            arc.tailPoint.X - arc.headPoint.X,
-                            arc.tailPoint.Y - arc.headPoint.Y), 0, -180);
-                    }
-
-
-                    else if (shapes[i] is CPolygon)
-                    {
-                        CPolygon polygon = (CPolygon)shapes[i];
-                        path.AddPolygon(polygon.points.ToArray());
-                    }
-                    else if (shapes[i] is CGroupShape)
+                    if (shapes[i] is CGroupShape)
                     {
                         CGroupShape group = (CGroupShape)shapes[i];
                         for (int j = 0; j < group.graphicsPaths.Length; j++)
@@ -102,6 +54,12 @@ namespace Thang_Paint
                             path.AddPath(group.graphicsPaths[j], false);
                         }
                     }
+                    else
+                    {
+                        path = shapes[i].gpPath;
+                    }
+
+                   
                     paths[i] = path;
                 }
 

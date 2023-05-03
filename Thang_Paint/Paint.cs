@@ -144,7 +144,7 @@ namespace Thang_Paint
 
         private void btnSelect_Click(object sender, EventArgs e)
         {
-            updateImp.changeMode();
+            updateImp.selectMode();
         }
 
         private void SBZoom_Scroll(object sender, ScrollEventArgs e)
@@ -264,7 +264,7 @@ namespace Thang_Paint
         {
             if (e.KeyCode == Keys.ControlKey)
             {
-                updateImp.changeMode();
+                updateImp.selectMode();
                 e.Handled = true;
             }
             if(e.KeyCode == Keys.Delete)
@@ -323,6 +323,16 @@ namespace Thang_Paint
         private void btcArc_Click(object sender, EventArgs e)
         {
             drawImp.onClickDrawArc();
+
+        }
+
+        private void btnClearAll_Click(object sender, EventArgs e)
+        {
+            updateImp.clearAll();
+        }
+
+        private void panel1_Paint_1(object sender, PaintEventArgs e)
+        {
 
         }
     }
