@@ -67,23 +67,7 @@ namespace Thang_Paint
             }
         }
 
-        public override object copy(Graphics gp)
-        {
-            CGroupShape group = new CGroupShape
-            {
-                headPoint = headPoint,
-                tailPoint = tailPoint,
-                isSelected = isSelected,
-                name = name,
-                color = color,
-                contourWidth = contourWidth
-            };
-            for (int i = 0; i < shapes.Count; i++)
-            {
-                group.shapes.Add(shapes[i].copy(gp) as Shape);
-            }
-            return group;
-        }
+        
         
         public override void Draw(Graphics gp)
         {
@@ -96,15 +80,17 @@ namespace Thang_Paint
                     {
                         if (shapes[i].isFill)
                         {
-                            using (Brush brush = new SolidBrush(shapes[i].color))
+                            using (Brush b = new HatchBrush(shapes[i].brushStyle, Color.White, shapes[i].color))
                             {
-                                gp.FillPath(brush, path);
+                                gp.FillPath(b, path);
                             }
+                            
                         }
                         else
                         {
                             using (Pen pen = new Pen(shapes[i].color, shapes[i].contourWidth))
                             {
+                                pen.DashStyle = shapes[i].dashStyle;
                                 gp.DrawPath(pen, path);
                             }
                         }
@@ -118,6 +104,7 @@ namespace Thang_Paint
                     {
                         using (Pen pen = new Pen(shapes[i].color, shapes[i].contourWidth))
                         {
+                            pen.DashStyle = shapes[i].dashStyle;
                             gp.DrawPath(pen, path);
                         }
                     }
@@ -127,7 +114,9 @@ namespace Thang_Paint
 
         public override bool isHit(Point p)
         {
-            GraphicsPath[] paths = graphicsPaths;
+           
+            
+                GraphicsPath[] paths = graphicsPaths;
             for (int i = 0; i < paths.Length; i++)
             {
                 using (GraphicsPath path = paths[i])

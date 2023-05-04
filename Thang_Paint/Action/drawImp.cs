@@ -15,12 +15,12 @@ namespace Thang_Paint.Action
 {
     internal class drawImp : IDraw
     {
-        IVIew viewPaint;
+        IPaint viewPaint;
 
         data storeData;
 
 
-        public drawImp(IVIew viewPaint)
+        public drawImp(IPaint viewPaint)
         {
             this.viewPaint = viewPaint;
             storeData = data.getInstance();

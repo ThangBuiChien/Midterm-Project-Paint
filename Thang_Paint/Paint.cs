@@ -15,7 +15,7 @@ using Thang_Paint.view;
 
 namespace Thang_Paint
 {
-    public partial class Paint : Form, Thang_Paint.view.IVIew
+    public partial class Paint : Form, Thang_Paint.view.IPaint
     {
         private drawImp drawImp;
         private Graphics gr;
@@ -44,6 +44,8 @@ namespace Thang_Paint
             updateImp.changeSize(2, gr);
             this.KeyPreview = true;
             this.KeyDown += new KeyEventHandler(Paint_KeyDown);
+            cbDash.SelectedIndex = 0;
+            cbBrushStyle.SelectedIndex = 0;
 
         }
 
@@ -149,15 +151,10 @@ namespace Thang_Paint
 
         private void SBZoom_Scroll(object sender, ScrollEventArgs e)
         {
-            // calculate the new zoom factor based on the scrollbar's value
-
-            //zoomFactor = 1.0f + (e.NewValue - e.OldValue) / 10.0f;
+            
             zoomFactor = 1.0f + (float)SBZoom.Value / 100.0f;
             updateImp.changeZoom(zoomFactor,gr);
-            // force a repaint of the panel to update the graphics
-            //   refreshDrawing();
-           // PLMain.AutoScroll = true;
-            //PLMain.Invalidate();
+            
             
 
 
@@ -303,6 +300,30 @@ namespace Thang_Paint
             else if (cbBrushStyle.SelectedIndex == 4)
             {
                 brushStyle = HatchStyle.DottedGrid;
+            }
+            else if (cbBrushStyle.SelectedIndex == 5)
+            {
+                brushStyle = HatchStyle.DashedVertical;
+            }
+            else if (cbBrushStyle.SelectedIndex == 6)
+            {
+                brushStyle = HatchStyle.Divot;
+            }
+            else if (cbBrushStyle.SelectedIndex == 7)
+            {
+                brushStyle = HatchStyle.DottedDiamond;
+            }
+            else if (cbBrushStyle.SelectedIndex == 8)
+            {
+                brushStyle = HatchStyle.Wave; 
+            }
+            else if (cbBrushStyle.SelectedIndex == 9)
+            {
+                brushStyle = HatchStyle.Weave;
+            }
+            else if (cbBrushStyle.SelectedIndex == 10)
+            {
+                brushStyle = HatchStyle.WideDownwardDiagonal;
             }
             updateImp.changeBrushStyle(brushStyle, gr);
 

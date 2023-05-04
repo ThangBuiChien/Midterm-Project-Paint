@@ -33,20 +33,8 @@ namespace Thang_Paint
             }
         }
 
-        public override object copy(Graphics gp)
-        {
-            return new CLine
-            {
-                headPoint = headPoint,
-                tailPoint = tailPoint,
-                contourWidth = contourWidth,
-                isSelected = isSelected,
-                color = color,
-                dashStyle = dashStyle,
-                name = name
-            };
-        }
-
+        
+        //draw function for Line class
         public override void Draw(Graphics gp)
         {
             using (GraphicsPath path = gpPath)

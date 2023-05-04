@@ -43,23 +43,7 @@ namespace Thang_Paint
             }
         }
 
-        public override object copy(Graphics gp)
-        {
-            CPolygon polygon = new CPolygon
-            {
-                headPoint = headPoint,
-                tailPoint = tailPoint,
-                isSelected = isSelected,
-                name = name,
-                color = color,
-                contourWidth = contourWidth,
-                dashStyle = dashStyle,
-                brushStyle = brushStyle,
-                isFill = isFill
-            };
-            points.ForEach(point => polygon.points.Add(point));
-            return polygon;
-        }
+       //Draw function for Polygon
 
         public override void Draw(Graphics gp)
         {
@@ -93,26 +77,7 @@ namespace Thang_Paint
             }
         }
 
-        public override bool isHit(Point p)
-        {
-
-            bool inside = false;
-            using (GraphicsPath path = gpPath)
-            {
-                if (!isFill)
-                {
-                    using (Pen pen = new Pen(color, contourWidth + 3))
-                    {
-                        inside = path.IsOutlineVisible(p, pen);
-                    }
-                }
-                else
-                {
-                    inside = path.IsVisible(p);
-                }
-            }
-            return inside;
-        }
+        
         public override void moveShape(Point distance)
         {
             base.moveShape(distance);

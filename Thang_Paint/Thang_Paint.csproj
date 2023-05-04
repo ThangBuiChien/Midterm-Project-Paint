@@ -70,7 +70,7 @@
     <Compile Include="tools\solvingFlicker.cs" />
     <Compile Include="tools\TakeSpaceRegion.cs" />
     <Compile Include="tools\CurrentShape.cs" />
-    <Compile Include="IPaint\IVIew.cs" />
+    <Compile Include="IPaint\IPaint.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

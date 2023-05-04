@@ -10,7 +10,7 @@ using Thang_Paint.Model;
 namespace Thang_Paint.view
 {
     
-        interface IVIew
+        interface IPaint
         {
             
             void refreshDrawing();  

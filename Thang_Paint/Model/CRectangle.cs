@@ -46,63 +46,9 @@ namespace Thang_Paint.Model
             }
         }
 
-        public override object copy(Graphics gp)
-        {
-            return new cRectangle
-            {
-                headPoint = headPoint,
-                tailPoint = tailPoint,
-                contourWidth = contourWidth,
-                isSelected = isSelected,
-                color = color,
-                dashStyle = dashStyle,
-                brushStyle = brushStyle,
-                name = name
-            };
-        }
+       
 
-        public override void Draw(Graphics gp)
-        {
-            using(GraphicsPath path = gpPath)
-            {
-                if (isFill)
-                {
-                    using (Brush b = new HatchBrush(brushStyle, Color.White, color))
-                    {
-                        gp.FillPath(b, path);
-                    }
-                }
-                else
-                {
-                    using (Pen p = new Pen(color, contourWidth))
-                    {
-                        p.DashStyle = dashStyle;
-                        gp.DrawPath(p, path);
-                    }
-                }
-            }
-        }
 
-        public override bool isHit(Point p)
-        {
-
-            bool inside = false;
-            using (GraphicsPath path = gpPath)
-            {
-                if (isFill)
-                {
-                    inside = path.IsVisible(p);
-                }
-                else
-                {
-                    using (Pen pen = new Pen(color, contourWidth + 3))
-                    {
-                        inside = path.IsOutlineVisible(p, pen);
-                    }
-                }
-            }
-
-            return inside;
-        }
+        
     }
 }

@@ -46,11 +46,49 @@ namespace Thang_Paint.Model
         public bool isSelected { get; set; }
 
 
-        public abstract void Draw(Graphics gp);
-        public abstract bool isHit(Point p);
+        public virtual void Draw(Graphics gp)
+        {
+            using (GraphicsPath path = gpPath)
+            {
+                if (isFill)
+                {
+                    using (Brush b = new HatchBrush(brushStyle, Color.White, color))
+                    {
+                        gp.FillPath(b, path);
+                    }
+                }
+                else
+                {
+                    using (Pen p = new Pen(color, contourWidth))
+                    {
+                        p.DashStyle = dashStyle;
+                        gp.DrawPath(p, path);
+                    }
+                }
+            }
+        }
 
+        public virtual bool isHit(Point p)
+        {
+            bool inside = false;
+            using (GraphicsPath path = gpPath)
+            {
+                if (isFill)
+                {
+                    inside = path.IsVisible(p);
+                }
+                else
+                {
+                    using (Pen pen = new Pen(color, contourWidth + 3))
+                    {
+                        inside = path.IsOutlineVisible(p, pen);
+                    }
+                }
+            }
 
-        public abstract object copy(Graphics gp);
+            return inside;
+        }
+
 
         public virtual void moveShape(Point distance)
         {
@@ -88,29 +126,7 @@ namespace Thang_Paint.Model
             }
             return new Rectangle(a.X, a.Y, b.X - a.X, b.Y - a.Y);
         }
-        public virtual void changePoint(int index)
-        {
-            if (index == 0 || index == 1 || index == 3)
-            {
-                Point point = headPoint;
-                headPoint = tailPoint;
-                tailPoint = point;
-            }
-            if (index == 2)
-            {
-                int a = tailPoint.X;
-                int b = headPoint.Y;
-                headPoint = new Point(headPoint.X, tailPoint.Y);
-                tailPoint = new Point(a, b);
-            }
-            if (index == 5)
-            {
-                int a = headPoint.X;
-                int b = tailPoint.Y;
-                headPoint = new Point(tailPoint.X, headPoint.Y);
-                tailPoint = new Point(a, b);
-            }
-        }
+       
 
     }
 }

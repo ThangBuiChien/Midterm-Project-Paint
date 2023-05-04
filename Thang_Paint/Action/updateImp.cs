@@ -14,11 +14,11 @@ namespace Thang_Paint.Action
 {
     internal class updateImp : IUpdate
     {
-        IVIew viewPaint;
+        IPaint viewPaint;
 
         data dataManager;
 
-        public updateImp(IVIew viewPaint)
+        public updateImp(IPaint viewPaint)
         {
             this.viewPaint = viewPaint;
             dataManager = data.getInstance();

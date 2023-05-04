@@ -250,7 +250,13 @@
             "Cross",
             "Dark Downward Diagonal",
             "Dotted Grid",
-            "Horizontal Brick"});
+            "Horizontal Brick",
+            "DashedVertical",
+            "Divot",
+            "DottedDiamond",
+            "Wave",
+            "Weave",
+            "WideDownwardDiagonal"});
             this.cbBrushStyle.Location = new System.Drawing.Point(317, 98);
             this.cbBrushStyle.Name = "cbBrushStyle";
             this.cbBrushStyle.Size = new System.Drawing.Size(121, 24);
@@ -399,9 +405,9 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(95, 133);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(46, 16);
+            this.label7.Size = new System.Drawing.Size(30, 16);
             this.label7.TabIndex = 22;
-            this.label7.Text = "Object";
+            this.label7.Text = "Edit";
             // 
             // Paint
             // 
